@@ -12,12 +12,15 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{FA7FD6C7-342A-40F3-8D23-6ECABBF5B435}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "docs", "docs", "{94039BE7-FDB0-4A8E-8493-9DA1EB49DC2B}"
+	ProjectSection(SolutionItems) = preProject
+		docs\WorkStatement.md = docs\WorkStatement.md
+	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UniformAccountingSystem.BLL", "src\UniformAccountingSystem.BLL\UniformAccountingSystem.BLL.csproj", "{C25DDAE2-3A5A-4E62-B4E3-220C892DC67E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UniformAccountingSystem.BLL", "src\UniformAccountingSystem.BLL\UniformAccountingSystem.BLL.csproj", "{C25DDAE2-3A5A-4E62-B4E3-220C892DC67E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UniformAccountingSystem.BlazorClient", "src\UniformAccountingSystem.BlazorClient\UniformAccountingSystem.BlazorClient.csproj", "{5EB658F4-5C48-484F-A026-72D5AA5F376E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UniformAccountingSystem.BlazorClient", "src\UniformAccountingSystem.BlazorClient\UniformAccountingSystem.BlazorClient.csproj", "{5EB658F4-5C48-484F-A026-72D5AA5F376E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UniformAccountingSystem.Data", "src\UniformAccountingSystem.Data\UniformAccountingSystem.Data.csproj", "{2E382DAB-DDE9-4703-BFB2-837BF9486293}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UniformAccountingSystem.Data", "src\UniformAccountingSystem.Data\UniformAccountingSystem.Data.csproj", "{2E382DAB-DDE9-4703-BFB2-837BF9486293}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
