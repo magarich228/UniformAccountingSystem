@@ -1,0 +1,46 @@
+﻿@page "/employees"
+@using UniformAccountingSystem.BLL.Dtos
+@using UniformAccountingSystem.BLL.Abstractions;
+@inject IEmployeesManager EmployeeManager
+
+<PageTitle>Сотрудники</PageTitle>
+
+<h1>Сотрудники</h1>
+
+@if (employees == null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Имя</th>
+                <th>Фамилия</th>
+                <th>Отчество</th>
+                <th>Должность</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var employee in employees)
+            {
+                <tr>
+                    <td>@employee.FirstName</td>
+                    <td>@employee.LastName</td>
+                    <td>@employee.Patronymic</td>
+                    <td>@employee.WorkPosition</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+@code {
+    private EmployeeDto[]? employees;
+
+    protected override async Task OnInitializedAsync()
+    {
+        employees = (await EmployeeManager.GetAllAsync()).ToArray();
+    }
+}

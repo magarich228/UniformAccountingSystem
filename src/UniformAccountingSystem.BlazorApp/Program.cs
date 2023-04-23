@@ -1,5 +1,4 @@
 using Microsoft.EntityFrameworkCore;
-using UniformAccountingSystem.BlazorApp.Data;
 using UniformAccountingSystem.Data;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -9,9 +8,10 @@ var services = builder.Services;
 
 services.AddDbContext<UniformAccountingContext>(options => options.UseSqlServer(configuration.GetConnectionString("uas")));
 
+services.AddUasBLLServices();
+
 services.AddRazorPages();
 services.AddServerSideBlazor();
-services.AddSingleton<WeatherForecastService>();
 
 var app = builder.Build();
 

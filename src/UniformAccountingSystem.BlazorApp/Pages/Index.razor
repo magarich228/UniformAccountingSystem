@@ -1,9 +1,20 @@
 ﻿@page "/"
+@using UniformAccountingSystem.BLL.Abstractions
+@inject IEmployeesManager EmployeesManager
 
-<PageTitle>Index</PageTitle>
+<PageTitle>Home</PageTitle>
 
-<h1>Hello, world!</h1>
+<h1>Система учета выдачи спецодежды</h1>
 
-Welcome to your new app.
+<h5>Исходный код на <a href="https://github.com/magarich228/UniformAccountingSystem">GitHub</a>.</h5>
 
-<SurveyPrompt Title="How is Blazor working for you?" />
+<span>Активных сотрудников в системе: @employeesCount</span>
+
+@code{
+    private int employeesCount;
+
+    protected override async Task OnInitializedAsync()
+    {
+        employeesCount = (await EmployeesManager.GetAllAsync()).Count();
+    }
+}
