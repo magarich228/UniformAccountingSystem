@@ -22,6 +22,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UniformAccountingSystem.Dat
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UniformAccountingSystem.BlazorApp", "src\UniformAccountingSystem.BlazorApp\UniformAccountingSystem.BlazorApp.csproj", "{0FAAEE13-6E82-42DE-8874-CD5BB13333D4}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "diagrams", "diagrams", "{20FC7BF9-FE66-4C50-99C0-8FCB1D9665FF}"
+	ProjectSection(SolutionItems) = preProject
+		docs\diagrams\UseCases.drawio = docs\diagrams\UseCases.drawio
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -48,6 +53,7 @@ Global
 		{C25DDAE2-3A5A-4E62-B4E3-220C892DC67E} = {FA7FD6C7-342A-40F3-8D23-6ECABBF5B435}
 		{2E382DAB-DDE9-4703-BFB2-837BF9486293} = {FA7FD6C7-342A-40F3-8D23-6ECABBF5B435}
 		{0FAAEE13-6E82-42DE-8874-CD5BB13333D4} = {FA7FD6C7-342A-40F3-8D23-6ECABBF5B435}
+		{20FC7BF9-FE66-4C50-99C0-8FCB1D9665FF} = {94039BE7-FDB0-4A8E-8493-9DA1EB49DC2B}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {85463CFF-30CA-49D7-8A53-B8B4B4CF16F6}

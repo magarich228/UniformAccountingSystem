@@ -1,6 +1,4 @@
-﻿using System.ComponentModel;
-
-namespace UniformAccountingSystem.Data.Entities
+﻿namespace UniformAccountingSystem.Data.Entities
 {
     public class Uniform
     {

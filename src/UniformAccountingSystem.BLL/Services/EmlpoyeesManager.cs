@@ -34,6 +34,19 @@ namespace UniformAccountingSystem.BLL.Services
             return Mapping.Map<Employee, EmployeeDto>(employee);
         }
 
+        public async Task<Guid?> AddAsync(EmployeeDto employeeDto, CancellationToken cancellationToken = default)
+        {
+            var employee = Mapping.Map<EmployeeDto, Employee>(employeeDto);
+
+            if (employee == null)
+                return null;
+
+            await _db.Employees.AddAsync(employee, cancellationToken);
+            var result = await _db.SaveChangesAsync(cancellationToken);
+
+            return (result > 0) ? employee.Id : null;
+        }
+
         public async Task<EmployeeDto?> UpdateInfoAsync(EmployeeDto employeeDto, CancellationToken cancellationToken = default)
         {
             var employee = await _db.Employees.FindAsync(new object[] { employeeDto.Id }, cancellationToken: cancellationToken);

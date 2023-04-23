@@ -6,6 +6,7 @@ namespace UniformAccountingSystem.BLL.Abstractions
     {
         Task<IEnumerable<EmployeeDto>>GetAllAsync(bool includeDismissed = false, CancellationToken cancellationToken = default);
         Task<EmployeeDto?> GetByIdAsync(Guid id, CancellationToken cancellationToken = default);
+        Task<Guid?> AddAsync(EmployeeDto employee, CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Уволить или принять обратно сотрудника.
