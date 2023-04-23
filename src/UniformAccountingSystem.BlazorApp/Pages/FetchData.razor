@@ -1,14 +1,13 @@
-﻿@page "/fetchdata"
-@using UniformAccountingSystem.BlazorApp.Data
-@inject WeatherForecastService ForecastService
+﻿@page "/employees"
+@using UniformAccountingSystem.BLL.Dtos
+@using UniformAccountingSystem.BLL.Abstractions;
+@inject IEmployeesManager EmployeeManager
 
 <PageTitle>Weather forecast</PageTitle>
 
-<h1>Weather forecast</h1>
+<h1>Сотрудники</h1>
 
-<p>This component demonstrates fetching data from a service.</p>
-
-@if (forecasts == null)
+@if (employees == null)
 {
     <p><em>Loading...</em></p>
 }
@@ -17,20 +16,20 @@ else
     <table class="table">
         <thead>
             <tr>
-                <th>Date</th>
-                <th>Temp. (C)</th>
-                <th>Temp. (F)</th>
-                <th>Summary</th>
+                <th>Имя</th>
+                <th>Фамилия</th>
+                <th>Отчество</th>
+                <th>Должность</th>
             </tr>
         </thead>
         <tbody>
-            @foreach (var forecast in forecasts)
+            @foreach (var employee in employees)
             {
                 <tr>
-                    <td>@forecast.Date.ToShortDateString()</td>
-                    <td>@forecast.TemperatureC</td>
-                    <td>@forecast.TemperatureF</td>
-                    <td>@forecast.Summary</td>
+                    <td>@employee.FirstName</td>
+                    <td>@employee.LastName</td>
+                    <td>@employee.Patronymic</td>
+                    <td>@employee.WorkPosition</td>
                 </tr>
             }
         </tbody>
@@ -38,10 +37,10 @@ else
 }
 
 @code {
-    private WeatherForecast[]? forecasts;
+    private EmployeeDto[]? employees;
 
     protected override async Task OnInitializedAsync()
     {
-        forecasts = await ForecastService.GetForecastAsync(DateOnly.FromDateTime(DateTime.Now));
+        employees = (await EmployeeManager.GetAllAsync()).ToArray();
     }
 }
