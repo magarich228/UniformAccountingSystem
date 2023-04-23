@@ -4,7 +4,7 @@ namespace UniformAccountingSystem.BLL.Dtos
 {
     public class EmployeeDto
     {
-        public Guid Id { get; set; }
+        public Guid Id { get; set; } = Guid.NewGuid();
 
         [Required, StringLength(50)]
         public string FirstName { get; set; } = null!;
