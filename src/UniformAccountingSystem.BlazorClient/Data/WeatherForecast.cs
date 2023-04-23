@@ -1,4 +1,4 @@
-namespace UniformAccountingSystem.BlazorClient.Data
+namespace UniformAccountingSystem.BlazorApp.Data
 {
     public class WeatherForecast
     {
