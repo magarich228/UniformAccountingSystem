@@ -1,5 +1,5 @@
 using Microsoft.EntityFrameworkCore;
-using UniformAccountingSystem.BlazorClient.Data;
+using UniformAccountingSystem.BlazorApp.Data;
 using UniformAccountingSystem.Data;
 
 var builder = WebApplication.CreateBuilder(args);
