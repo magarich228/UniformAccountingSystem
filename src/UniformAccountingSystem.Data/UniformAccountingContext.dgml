@@ -1,0 +1,213 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<DirectedGraph GraphDirection="LeftToRight" xmlns="http://schemas.microsoft.com/vs/2009/dgml">
+  <Nodes>
+<Node Id="IModel" Label="UniformAccountingContext" ChangeTrackingStrategy="ChangeTrackingStrategy.Snapshot" PropertyAccessMode="PropertyAccessMode.Default" ProductVersion="7.0.5" Annotations="BaseTypeDiscoveryConvention:DerivedTypes: System.Collections.Generic.Dictionary`2[System.Type,System.Collections.Generic.List`1[Microsoft.EntityFrameworkCore.Metadata.IConventionEntityType]]
+Relational:MaxIdentifierLength: 128
+RelationshipDiscoveryConvention:InverseNavigationCandidates: System.Collections.Generic.Dictionary`2[System.Type,System.Collections.Generic.SortedSet`1[System.Type]]
+SqlServer:ValueGenerationStrategy: IdentityColumn" Category="Model" Group="Expanded" />
+<Node Id = "Employee" Label="Employee" Name="Employee" BaseClass="" IsAbstract="False" ChangeTrackingStrategy="ChangeTrackingStrategy.Snapshot"  Annotations="Relational:TableName: Employees
+RelationshipDiscoveryConvention:NavigationCandidates: System.Collections.Immutable.ImmutableSortedDictionary`2[System.Reflection.PropertyInfo,System.ValueTuple`2[System.Type,System.Nullable`1[System.Boolean]]]" Category="EntityType" Group="Expanded" />
+<Node Id = "IssuanceItem" Label="IssuanceItem" Name="IssuanceItem" BaseClass="" IsAbstract="False" ChangeTrackingStrategy="ChangeTrackingStrategy.Snapshot"  Annotations="Relational:CheckConstraints: System.Collections.Generic.SortedDictionary`2[System.String,Microsoft.EntityFrameworkCore.Metadata.ICheckConstraint]
+Relational:TableName: IssuesItem
+RelationshipDiscoveryConvention:NavigationCandidates: System.Collections.Immutable.ImmutableSortedDictionary`2[System.Reflection.PropertyInfo,System.ValueTuple`2[System.Type,System.Nullable`1[System.Boolean]]]" Category="EntityType" Group="Expanded" />
+<Node Id = "Employee.Id" Label="Id (Guid)" Name="Id" Category="Property Primary" Type="Guid" MaxLength="None" Field="" PropertyAccessMode="PropertyAccessMode.Default" BeforeSaveBehavior="PropertySaveBehavior.Save" AfterSaveBehavior="PropertySaveBehavior.Save" Annotations="" IsPrimaryKey="True" IsForeignKey="False" IsRequired="True" IsIndexed="False" IsShadow="False" IsAlternateKey="False" IsConcurrencyToken="False" IsUnicode="True" ValueGenerated="ValueGenerated.OnAdd" />
+<Node Id = "Employee.FirstName" Label="FirstName (string)" Name="FirstName" Category="Property Required" Type="string" MaxLength="(50)" Field="" PropertyAccessMode="PropertyAccessMode.Default" BeforeSaveBehavior="PropertySaveBehavior.Save" AfterSaveBehavior="PropertySaveBehavior.Save" Annotations="MaxLength: 50" IsPrimaryKey="False" IsForeignKey="False" IsRequired="True" IsIndexed="False" IsShadow="False" IsAlternateKey="False" IsConcurrencyToken="False" IsUnicode="True" ValueGenerated="None" />
+<Node Id = "Employee.LastName" Label="LastName (string)" Name="LastName" Category="Property Required" Type="string" MaxLength="(50)" Field="" PropertyAccessMode="PropertyAccessMode.Default" BeforeSaveBehavior="PropertySaveBehavior.Save" AfterSaveBehavior="PropertySaveBehavior.Save" Annotations="MaxLength: 50" IsPrimaryKey="False" IsForeignKey="False" IsRequired="True" IsIndexed="False" IsShadow="False" IsAlternateKey="False" IsConcurrencyToken="False" IsUnicode="True" ValueGenerated="None" />
+<Node Id = "Employee.Patronymic" Label="Patronymic (string)" Name="Patronymic" Category="Property Required" Type="string" MaxLength="(50)" Field="" PropertyAccessMode="PropertyAccessMode.Default" BeforeSaveBehavior="PropertySaveBehavior.Save" AfterSaveBehavior="PropertySaveBehavior.Save" Annotations="MaxLength: 50" IsPrimaryKey="False" IsForeignKey="False" IsRequired="True" IsIndexed="False" IsShadow="False" IsAlternateKey="False" IsConcurrencyToken="False" IsUnicode="True" ValueGenerated="None" />
+<Node Id = "Employee.State" Label="State (EmployeeState)" Name="State" Category="Property Required" Type="EmployeeState" MaxLength="None" Field="" PropertyAccessMode="PropertyAccessMode.Default" BeforeSaveBehavior="PropertySaveBehavior.Save" AfterSaveBehavior="PropertySaveBehavior.Save" Annotations="Relational:DefaultValue: Active" IsPrimaryKey="False" IsForeignKey="False" IsRequired="True" IsIndexed="False" IsShadow="False" IsAlternateKey="False" IsConcurrencyToken="False" IsUnicode="True" ValueGenerated="ValueGenerated.OnAdd" />
+<Node Id = "Employee.WorkPosition" Label="WorkPosition (string)" Name="WorkPosition" Category="Property Required" Type="string" MaxLength="(100)" Field="" PropertyAccessMode="PropertyAccessMode.Default" BeforeSaveBehavior="PropertySaveBehavior.Save" AfterSaveBehavior="PropertySaveBehavior.Save" Annotations="MaxLength: 100" IsPrimaryKey="False" IsForeignKey="False" IsRequired="True" IsIndexed="False" IsShadow="False" IsAlternateKey="False" IsConcurrencyToken="False" IsUnicode="True" ValueGenerated="None" />
+<Node Id = "ReceiptItem" Label="ReceiptItem" Name="ReceiptItem" BaseClass="" IsAbstract="False" ChangeTrackingStrategy="ChangeTrackingStrategy.Snapshot"  Annotations="Relational:CheckConstraints: System.Collections.Generic.SortedDictionary`2[System.String,Microsoft.EntityFrameworkCore.Metadata.ICheckConstraint]
+Relational:TableName: ReceiptItems
+RelationshipDiscoveryConvention:NavigationCandidates: System.Collections.Immutable.ImmutableSortedDictionary`2[System.Reflection.PropertyInfo,System.ValueTuple`2[System.Type,System.Nullable`1[System.Boolean]]]" Category="EntityType" Group="Expanded" />
+<Node Id = "IssuanceItem.Id" Label="Id (Guid)" Name="Id" Category="Property Primary" Type="Guid" MaxLength="None" Field="" PropertyAccessMode="PropertyAccessMode.Default" BeforeSaveBehavior="PropertySaveBehavior.Save" AfterSaveBehavior="PropertySaveBehavior.Save" Annotations="" IsPrimaryKey="True" IsForeignKey="False" IsRequired="True" IsIndexed="False" IsShadow="False" IsAlternateKey="False" IsConcurrencyToken="False" IsUnicode="True" ValueGenerated="ValueGenerated.OnAdd" />
+<Node Id = "IssuanceItem.Issuance" Label="Issuance (1)" Name="Issuance" Category="Navigation Property" Type="UniformIssuance"  Field="" Dependent="" Principal="UniformIssuance" Inverse="IssuanceItems" PropertyAccessMode="PropertyAccessMode.Default" />
+<Node Id = "IssuanceItem.Uniform" Label="Uniform (1)" Name="Uniform" Category="Navigation Property" Type="Uniform"  Field="" Dependent="" Principal="Uniform" Inverse="" PropertyAccessMode="PropertyAccessMode.Default" />
+<Node Id = "IssuanceItem.Amount" Label="Amount (int)" Name="Amount" Category="Property Required" Type="int" MaxLength="None" Field="" PropertyAccessMode="PropertyAccessMode.Default" BeforeSaveBehavior="PropertySaveBehavior.Save" AfterSaveBehavior="PropertySaveBehavior.Save" Annotations="Relational:DefaultValue: 1" IsPrimaryKey="False" IsForeignKey="False" IsRequired="True" IsIndexed="False" IsShadow="False" IsAlternateKey="False" IsConcurrencyToken="False" IsUnicode="True" ValueGenerated="ValueGenerated.OnAdd" />
+<Node Id = "IssuanceItem.IssuanceId" Label="IssuanceId (Guid)" Name="IssuanceId" Category="Property Foreign" Type="Guid" MaxLength="None" Field="" PropertyAccessMode="PropertyAccessMode.Default" BeforeSaveBehavior="PropertySaveBehavior.Save" AfterSaveBehavior="PropertySaveBehavior.Save" Annotations="" IsPrimaryKey="False" IsForeignKey="True" IsRequired="True" IsIndexed="True" IsShadow="False" IsAlternateKey="False" IsConcurrencyToken="False" IsUnicode="True" ValueGenerated="None" />
+<Node Id = "IssuanceItem.UniformId" Label="UniformId (Guid)" Name="UniformId" Category="Property Foreign" Type="Guid" MaxLength="None" Field="" PropertyAccessMode="PropertyAccessMode.Default" BeforeSaveBehavior="PropertySaveBehavior.Save" AfterSaveBehavior="PropertySaveBehavior.Save" Annotations="" IsPrimaryKey="False" IsForeignKey="True" IsRequired="True" IsIndexed="True" IsShadow="False" IsAlternateKey="False" IsConcurrencyToken="False" IsUnicode="True" ValueGenerated="None" />
+<Node Id = "Uniform" Label="Uniform" Name="Uniform" BaseClass="" IsAbstract="False" ChangeTrackingStrategy="ChangeTrackingStrategy.Snapshot"  Annotations="Relational:CheckConstraints: System.Collections.Generic.SortedDictionary`2[System.String,Microsoft.EntityFrameworkCore.Metadata.ICheckConstraint]
+Relational:TableName: Uniforms
+RelationshipDiscoveryConvention:NavigationCandidates: System.Collections.Immutable.ImmutableSortedDictionary`2[System.Reflection.PropertyInfo,System.ValueTuple`2[System.Type,System.Nullable`1[System.Boolean]]]" Category="EntityType" Group="Expanded" />
+<Node Id = "ReceiptItem.Id" Label="Id (Guid)" Name="Id" Category="Property Primary" Type="Guid" MaxLength="None" Field="" PropertyAccessMode="PropertyAccessMode.Default" BeforeSaveBehavior="PropertySaveBehavior.Save" AfterSaveBehavior="PropertySaveBehavior.Save" Annotations="" IsPrimaryKey="True" IsForeignKey="False" IsRequired="True" IsIndexed="False" IsShadow="False" IsAlternateKey="False" IsConcurrencyToken="False" IsUnicode="True" ValueGenerated="ValueGenerated.OnAdd" />
+<Node Id = "ReceiptItem.Receipt" Label="Receipt (1)" Name="Receipt" Category="Navigation Property" Type="UniformReceipt"  Field="" Dependent="" Principal="UniformReceipt" Inverse="ReceiptItems" PropertyAccessMode="PropertyAccessMode.Default" />
+<Node Id = "ReceiptItem.Uniform" Label="Uniform (1)" Name="Uniform" Category="Navigation Property" Type="Uniform"  Field="" Dependent="" Principal="Uniform" Inverse="" PropertyAccessMode="PropertyAccessMode.Default" />
+<Node Id = "ReceiptItem.Amount" Label="Amount (int)" Name="Amount" Category="Property Required" Type="int" MaxLength="None" Field="" PropertyAccessMode="PropertyAccessMode.Default" BeforeSaveBehavior="PropertySaveBehavior.Save" AfterSaveBehavior="PropertySaveBehavior.Save" Annotations="Relational:DefaultValue: 1" IsPrimaryKey="False" IsForeignKey="False" IsRequired="True" IsIndexed="False" IsShadow="False" IsAlternateKey="False" IsConcurrencyToken="False" IsUnicode="True" ValueGenerated="ValueGenerated.OnAdd" />
+<Node Id = "ReceiptItem.ReceiptId" Label="ReceiptId (Guid)" Name="ReceiptId" Category="Property Foreign" Type="Guid" MaxLength="None" Field="" PropertyAccessMode="PropertyAccessMode.Default" BeforeSaveBehavior="PropertySaveBehavior.Save" AfterSaveBehavior="PropertySaveBehavior.Save" Annotations="" IsPrimaryKey="False" IsForeignKey="True" IsRequired="True" IsIndexed="True" IsShadow="False" IsAlternateKey="False" IsConcurrencyToken="False" IsUnicode="True" ValueGenerated="None" />
+<Node Id = "ReceiptItem.UniformId" Label="UniformId (Guid)" Name="UniformId" Category="Property Foreign" Type="Guid" MaxLength="None" Field="" PropertyAccessMode="PropertyAccessMode.Default" BeforeSaveBehavior="PropertySaveBehavior.Save" AfterSaveBehavior="PropertySaveBehavior.Save" Annotations="" IsPrimaryKey="False" IsForeignKey="True" IsRequired="True" IsIndexed="True" IsShadow="False" IsAlternateKey="False" IsConcurrencyToken="False" IsUnicode="True" ValueGenerated="None" />
+<Node Id = "UniformDiscard" Label="UniformDiscard" Name="UniformDiscard" BaseClass="" IsAbstract="False" ChangeTrackingStrategy="ChangeTrackingStrategy.Snapshot"  Annotations="Relational:CheckConstraints: System.Collections.Generic.SortedDictionary`2[System.String,Microsoft.EntityFrameworkCore.Metadata.ICheckConstraint]
+Relational:TableName: Discards
+RelationshipDiscoveryConvention:NavigationCandidates: System.Collections.Immutable.ImmutableSortedDictionary`2[System.Reflection.PropertyInfo,System.ValueTuple`2[System.Type,System.Nullable`1[System.Boolean]]]" Category="EntityType" Group="Expanded" />
+<Node Id = "Uniform.Id" Label="Id (Guid)" Name="Id" Category="Property Primary" Type="Guid" MaxLength="None" Field="" PropertyAccessMode="PropertyAccessMode.Default" BeforeSaveBehavior="PropertySaveBehavior.Save" AfterSaveBehavior="PropertySaveBehavior.Save" Annotations="" IsPrimaryKey="True" IsForeignKey="False" IsRequired="True" IsIndexed="False" IsShadow="False" IsAlternateKey="False" IsConcurrencyToken="False" IsUnicode="True" ValueGenerated="ValueGenerated.OnAdd" />
+<Node Id = "Uniform.UniformTypeRef" Label="UniformTypeRef (1)" Name="UniformTypeRef" Category="Navigation Property" Type="UniformTypeRef"  Field="" Dependent="" Principal="UniformTypeRef" Inverse="" PropertyAccessMode="PropertyAccessMode.Default" />
+<Node Id = "Uniform.Name" Label="Name (string)" Name="Name" Category="Property Required" Type="string" MaxLength="(100)" Field="" PropertyAccessMode="PropertyAccessMode.Default" BeforeSaveBehavior="PropertySaveBehavior.Save" AfterSaveBehavior="PropertySaveBehavior.Save" Annotations="MaxLength: 100" IsPrimaryKey="False" IsForeignKey="False" IsRequired="True" IsIndexed="False" IsShadow="False" IsAlternateKey="True" IsConcurrencyToken="False" IsUnicode="True" ValueGenerated="None" />
+<Node Id = "Uniform.Price" Label="Price (double)" Name="Price" Category="Property Required" Type="double" MaxLength="None" Field="" PropertyAccessMode="PropertyAccessMode.Default" BeforeSaveBehavior="PropertySaveBehavior.Save" AfterSaveBehavior="PropertySaveBehavior.Save" Annotations="" IsPrimaryKey="False" IsForeignKey="False" IsRequired="True" IsIndexed="False" IsShadow="False" IsAlternateKey="False" IsConcurrencyToken="False" IsUnicode="True" ValueGenerated="None" />
+<Node Id = "Uniform.UniformType" Label="UniformType (UniformType)" Name="UniformType" Category="Property Required" Type="UniformType" MaxLength="None" Field="" PropertyAccessMode="PropertyAccessMode.Default" BeforeSaveBehavior="PropertySaveBehavior.Save" AfterSaveBehavior="PropertySaveBehavior.Save" Annotations="Relational:DefaultValue: Other" IsPrimaryKey="False" IsForeignKey="False" IsRequired="True" IsIndexed="False" IsShadow="False" IsAlternateKey="False" IsConcurrencyToken="False" IsUnicode="True" ValueGenerated="ValueGenerated.OnAdd" />
+<Node Id = "Uniform.UniformTypeRefUniformType" Label="UniformTypeRefUniformType (UniformType?)" Name="UniformTypeRefUniformType" Category="Property Foreign" Type="UniformType?" MaxLength="None" Field="nofield" PropertyAccessMode="PropertyAccessMode.Default" BeforeSaveBehavior="PropertySaveBehavior.Save" AfterSaveBehavior="PropertySaveBehavior.Save" Annotations="" IsPrimaryKey="False" IsForeignKey="True" IsRequired="False" IsIndexed="True" IsShadow="True" IsAlternateKey="False" IsConcurrencyToken="False" IsUnicode="True" ValueGenerated="None" />
+<Node Id = "UniformIssuance" Label="UniformIssuance" Name="UniformIssuance" BaseClass="" IsAbstract="False" ChangeTrackingStrategy="ChangeTrackingStrategy.Snapshot"  Annotations="Relational:TableName: Issues
+RelationshipDiscoveryConvention:NavigationCandidates: System.Collections.Immutable.ImmutableSortedDictionary`2[System.Reflection.PropertyInfo,System.ValueTuple`2[System.Type,System.Nullable`1[System.Boolean]]]" Category="EntityType" Group="Expanded" />
+<Node Id = "UniformDiscard.Id" Label="Id (Guid)" Name="Id" Category="Property Primary" Type="Guid" MaxLength="None" Field="" PropertyAccessMode="PropertyAccessMode.Default" BeforeSaveBehavior="PropertySaveBehavior.Save" AfterSaveBehavior="PropertySaveBehavior.Save" Annotations="" IsPrimaryKey="True" IsForeignKey="False" IsRequired="True" IsIndexed="False" IsShadow="False" IsAlternateKey="False" IsConcurrencyToken="False" IsUnicode="True" ValueGenerated="ValueGenerated.OnAdd" />
+<Node Id = "UniformDiscard.Uniform" Label="Uniform (1)" Name="Uniform" Category="Navigation Property" Type="Uniform"  Field="" Dependent="" Principal="Uniform" Inverse="" PropertyAccessMode="PropertyAccessMode.Default" />
+<Node Id = "UniformDiscard.Amount" Label="Amount (int)" Name="Amount" Category="Property Required" Type="int" MaxLength="None" Field="" PropertyAccessMode="PropertyAccessMode.Default" BeforeSaveBehavior="PropertySaveBehavior.Save" AfterSaveBehavior="PropertySaveBehavior.Save" Annotations="Relational:DefaultValue: 1" IsPrimaryKey="False" IsForeignKey="False" IsRequired="True" IsIndexed="False" IsShadow="False" IsAlternateKey="False" IsConcurrencyToken="False" IsUnicode="True" ValueGenerated="ValueGenerated.OnAdd" />
+<Node Id = "UniformDiscard.Reason" Label="Reason (string)" Name="Reason" Category="Property Optional" Type="string" MaxLength="(100)" Field="" PropertyAccessMode="PropertyAccessMode.Default" BeforeSaveBehavior="PropertySaveBehavior.Save" AfterSaveBehavior="PropertySaveBehavior.Save" Annotations="MaxLength: 100" IsPrimaryKey="False" IsForeignKey="False" IsRequired="False" IsIndexed="False" IsShadow="False" IsAlternateKey="False" IsConcurrencyToken="False" IsUnicode="True" ValueGenerated="None" />
+<Node Id = "UniformDiscard.UniformId" Label="UniformId (Guid)" Name="UniformId" Category="Property Foreign" Type="Guid" MaxLength="None" Field="" PropertyAccessMode="PropertyAccessMode.Default" BeforeSaveBehavior="PropertySaveBehavior.Save" AfterSaveBehavior="PropertySaveBehavior.Save" Annotations="" IsPrimaryKey="False" IsForeignKey="True" IsRequired="True" IsIndexed="True" IsShadow="False" IsAlternateKey="False" IsConcurrencyToken="False" IsUnicode="True" ValueGenerated="None" />
+<Node Id = "UniformReceipt" Label="UniformReceipt" Name="UniformReceipt" BaseClass="" IsAbstract="False" ChangeTrackingStrategy="ChangeTrackingStrategy.Snapshot"  Annotations="Relational:TableName: Receipts
+RelationshipDiscoveryConvention:NavigationCandidates: System.Collections.Immutable.ImmutableSortedDictionary`2[System.Reflection.PropertyInfo,System.ValueTuple`2[System.Type,System.Nullable`1[System.Boolean]]]" Category="EntityType" Group="Expanded" />
+<Node Id = "UniformIssuance.Id" Label="Id (Guid)" Name="Id" Category="Property Primary" Type="Guid" MaxLength="None" Field="" PropertyAccessMode="PropertyAccessMode.Default" BeforeSaveBehavior="PropertySaveBehavior.Save" AfterSaveBehavior="PropertySaveBehavior.Save" Annotations="" IsPrimaryKey="True" IsForeignKey="False" IsRequired="True" IsIndexed="False" IsShadow="False" IsAlternateKey="False" IsConcurrencyToken="False" IsUnicode="True" ValueGenerated="ValueGenerated.OnAdd" />
+<Node Id = "UniformIssuance.Employee" Label="Employee (1)" Name="Employee" Category="Navigation Property" Type="Employee"  Field="" Dependent="" Principal="Employee" Inverse="" PropertyAccessMode="PropertyAccessMode.Default" />
+<Node Id = "UniformIssuance.IssuanceItems" Label="IssuanceItems (*)" Name="IssuanceItems" Category="Navigation Collection" Type="List&lt;IssuanceItem&gt;"  Field="" Dependent="IssuanceItem" Principal="" Inverse="Issuance" PropertyAccessMode="PropertyAccessMode.Default" />
+<Node Id = "UniformIssuance.Desctiption" Label="Desctiption (string)" Name="Desctiption" Category="Property Optional" Type="string" MaxLength="(200)" Field="" PropertyAccessMode="PropertyAccessMode.Default" BeforeSaveBehavior="PropertySaveBehavior.Save" AfterSaveBehavior="PropertySaveBehavior.Save" Annotations="MaxLength: 200" IsPrimaryKey="False" IsForeignKey="False" IsRequired="False" IsIndexed="False" IsShadow="False" IsAlternateKey="False" IsConcurrencyToken="False" IsUnicode="True" ValueGenerated="None" />
+<Node Id = "UniformIssuance.EmployeeId" Label="EmployeeId (Guid)" Name="EmployeeId" Category="Property Foreign" Type="Guid" MaxLength="None" Field="" PropertyAccessMode="PropertyAccessMode.Default" BeforeSaveBehavior="PropertySaveBehavior.Save" AfterSaveBehavior="PropertySaveBehavior.Save" Annotations="" IsPrimaryKey="False" IsForeignKey="True" IsRequired="True" IsIndexed="True" IsShadow="False" IsAlternateKey="False" IsConcurrencyToken="False" IsUnicode="True" ValueGenerated="None" />
+<Node Id = "UniformIssuance.IssuanceAction" Label="IssuanceAction (IssuanceAction)" Name="IssuanceAction" Category="Property Required" Type="IssuanceAction" MaxLength="None" Field="" PropertyAccessMode="PropertyAccessMode.Default" BeforeSaveBehavior="PropertySaveBehavior.Save" AfterSaveBehavior="PropertySaveBehavior.Save" Annotations="Relational:DefaultValue: Issuance" IsPrimaryKey="False" IsForeignKey="False" IsRequired="True" IsIndexed="False" IsShadow="False" IsAlternateKey="False" IsConcurrencyToken="False" IsUnicode="True" ValueGenerated="ValueGenerated.OnAdd" />
+<Node Id = "UniformIssuance.IssuanceDate" Label="IssuanceDate (DateTime)" Name="IssuanceDate" Category="Property Required" Type="DateTime" MaxLength="None" Field="" PropertyAccessMode="PropertyAccessMode.Default" BeforeSaveBehavior="PropertySaveBehavior.Save" AfterSaveBehavior="PropertySaveBehavior.Save" Annotations="Relational:DefaultValue: 23.04.2023 12:10:10" IsPrimaryKey="False" IsForeignKey="False" IsRequired="True" IsIndexed="False" IsShadow="False" IsAlternateKey="False" IsConcurrencyToken="False" IsUnicode="True" ValueGenerated="ValueGenerated.OnAdd" />
+<Node Id = "UniformTypeRef" Label="UniformTypeRef" Name="UniformTypeRef" BaseClass="" IsAbstract="False" ChangeTrackingStrategy="ChangeTrackingStrategy.Snapshot"  Annotations="Relational:TableName: UniformTypes
+RelationshipDiscoveryConvention:NavigationCandidates: System.Collections.Immutable.ImmutableSortedDictionary`2[System.Reflection.PropertyInfo,System.ValueTuple`2[System.Type,System.Nullable`1[System.Boolean]]]" Category="EntityType" Group="Expanded" />
+<Node Id = "UniformReceipt.Id" Label="Id (Guid)" Name="Id" Category="Property Primary" Type="Guid" MaxLength="None" Field="" PropertyAccessMode="PropertyAccessMode.Default" BeforeSaveBehavior="PropertySaveBehavior.Save" AfterSaveBehavior="PropertySaveBehavior.Save" Annotations="" IsPrimaryKey="True" IsForeignKey="False" IsRequired="True" IsIndexed="False" IsShadow="False" IsAlternateKey="False" IsConcurrencyToken="False" IsUnicode="True" ValueGenerated="ValueGenerated.OnAdd" />
+<Node Id = "UniformReceipt.ReceiptItems" Label="ReceiptItems (*)" Name="ReceiptItems" Category="Navigation Collection" Type="List&lt;ReceiptItem&gt;"  Field="" Dependent="ReceiptItem" Principal="" Inverse="Receipt" PropertyAccessMode="PropertyAccessMode.Default" />
+<Node Id = "UniformReceipt.Vendor" Label="Vendor (1)" Name="Vendor" Category="Navigation Property" Type="UniformVendor"  Field="" Dependent="" Principal="UniformVendor" Inverse="" PropertyAccessMode="PropertyAccessMode.Default" />
+<Node Id = "UniformReceipt.Desctiption" Label="Desctiption (string)" Name="Desctiption" Category="Property Optional" Type="string" MaxLength="(200)" Field="" PropertyAccessMode="PropertyAccessMode.Default" BeforeSaveBehavior="PropertySaveBehavior.Save" AfterSaveBehavior="PropertySaveBehavior.Save" Annotations="MaxLength: 200" IsPrimaryKey="False" IsForeignKey="False" IsRequired="False" IsIndexed="False" IsShadow="False" IsAlternateKey="False" IsConcurrencyToken="False" IsUnicode="True" ValueGenerated="None" />
+<Node Id = "UniformReceipt.ReceiptDate" Label="ReceiptDate (DateTime)" Name="ReceiptDate" Category="Property Required" Type="DateTime" MaxLength="None" Field="" PropertyAccessMode="PropertyAccessMode.Default" BeforeSaveBehavior="PropertySaveBehavior.Save" AfterSaveBehavior="PropertySaveBehavior.Save" Annotations="Relational:DefaultValue: 23.04.2023 12:10:10" IsPrimaryKey="False" IsForeignKey="False" IsRequired="True" IsIndexed="False" IsShadow="False" IsAlternateKey="False" IsConcurrencyToken="False" IsUnicode="True" ValueGenerated="ValueGenerated.OnAdd" />
+<Node Id = "UniformReceipt.VendorId" Label="VendorId (Guid)" Name="VendorId" Category="Property Foreign" Type="Guid" MaxLength="None" Field="" PropertyAccessMode="PropertyAccessMode.Default" BeforeSaveBehavior="PropertySaveBehavior.Save" AfterSaveBehavior="PropertySaveBehavior.Save" Annotations="" IsPrimaryKey="False" IsForeignKey="True" IsRequired="True" IsIndexed="True" IsShadow="False" IsAlternateKey="False" IsConcurrencyToken="False" IsUnicode="True" ValueGenerated="None" />
+<Node Id = "UniformVendor" Label="UniformVendor" Name="UniformVendor" BaseClass="" IsAbstract="False" ChangeTrackingStrategy="ChangeTrackingStrategy.Snapshot"  Annotations="Relational:TableName: Vendors
+RelationshipDiscoveryConvention:NavigationCandidates: System.Collections.Immutable.ImmutableSortedDictionary`2[System.Reflection.PropertyInfo,System.ValueTuple`2[System.Type,System.Nullable`1[System.Boolean]]]" Category="EntityType" Group="Expanded" />
+<Node Id = "UniformTypeRef.UniformType" Label="UniformType (UniformType)" Name="UniformType" Category="Property Primary" Type="UniformType" MaxLength="None" Field="" PropertyAccessMode="PropertyAccessMode.Default" BeforeSaveBehavior="PropertySaveBehavior.Save" AfterSaveBehavior="PropertySaveBehavior.Save" Annotations="" IsPrimaryKey="True" IsForeignKey="False" IsRequired="True" IsIndexed="False" IsShadow="False" IsAlternateKey="False" IsConcurrencyToken="False" IsUnicode="True" ValueGenerated="None" />
+<Node Id = "UniformTypeRef.UniformTypeName" Label="UniformTypeName (string)" Name="UniformTypeName" Category="Property Required" Type="string" MaxLength="None" Field="" PropertyAccessMode="PropertyAccessMode.Default" BeforeSaveBehavior="PropertySaveBehavior.Save" AfterSaveBehavior="PropertySaveBehavior.Save" Annotations="" IsPrimaryKey="False" IsForeignKey="False" IsRequired="True" IsIndexed="False" IsShadow="False" IsAlternateKey="False" IsConcurrencyToken="False" IsUnicode="True" ValueGenerated="None" />
+<Node Id = "UniformVendor" Label="UniformVendor" Name="UniformVendor" BaseClass="" IsAbstract="False" ChangeTrackingStrategy="ChangeTrackingStrategy.Snapshot"  Annotations="" Category="EntityType" Group="Expanded" />
+<Node Id = "UniformVendor.Id" Label="Id (Guid)" Name="Id" Category="Property Primary" Type="Guid" MaxLength="None" Field="" PropertyAccessMode="PropertyAccessMode.Default" BeforeSaveBehavior="PropertySaveBehavior.Save" AfterSaveBehavior="PropertySaveBehavior.Save" Annotations="" IsPrimaryKey="True" IsForeignKey="False" IsRequired="True" IsIndexed="False" IsShadow="False" IsAlternateKey="False" IsConcurrencyToken="False" IsUnicode="True" ValueGenerated="ValueGenerated.OnAdd" />
+<Node Id = "UniformVendor.Description" Label="Description (string)" Name="Description" Category="Property Optional" Type="string" MaxLength="(200)" Field="" PropertyAccessMode="PropertyAccessMode.Default" BeforeSaveBehavior="PropertySaveBehavior.Save" AfterSaveBehavior="PropertySaveBehavior.Save" Annotations="MaxLength: 200" IsPrimaryKey="False" IsForeignKey="False" IsRequired="False" IsIndexed="False" IsShadow="False" IsAlternateKey="False" IsConcurrencyToken="False" IsUnicode="True" ValueGenerated="None" />
+<Node Id = "UniformVendor.Email" Label="Email (string)" Name="Email" Category="Property Optional" Type="string" MaxLength="(100)" Field="" PropertyAccessMode="PropertyAccessMode.Default" BeforeSaveBehavior="PropertySaveBehavior.Save" AfterSaveBehavior="PropertySaveBehavior.Save" Annotations="MaxLength: 100" IsPrimaryKey="False" IsForeignKey="False" IsRequired="False" IsIndexed="False" IsShadow="False" IsAlternateKey="False" IsConcurrencyToken="False" IsUnicode="True" ValueGenerated="None" />
+<Node Id = "UniformVendor.Name" Label="Name (string)" Name="Name" Category="Property Required" Type="string" MaxLength="(100)" Field="" PropertyAccessMode="PropertyAccessMode.Default" BeforeSaveBehavior="PropertySaveBehavior.Save" AfterSaveBehavior="PropertySaveBehavior.Save" Annotations="MaxLength: 100" IsPrimaryKey="False" IsForeignKey="False" IsRequired="True" IsIndexed="False" IsShadow="False" IsAlternateKey="True" IsConcurrencyToken="False" IsUnicode="True" ValueGenerated="None" />
+<Node Id = "UniformVendor.Phone" Label="Phone (string)" Name="Phone" Category="Property Required" Type="string" MaxLength="(50)" Field="" PropertyAccessMode="PropertyAccessMode.Default" BeforeSaveBehavior="PropertySaveBehavior.Save" AfterSaveBehavior="PropertySaveBehavior.Save" Annotations="MaxLength: 50" IsPrimaryKey="False" IsForeignKey="False" IsRequired="True" IsIndexed="False" IsShadow="False" IsAlternateKey="True" IsConcurrencyToken="False" IsUnicode="True" ValueGenerated="None" />
+  </Nodes>
+  <Links>
+<Link Source = "IModel" Target="Employee" Category="Contains" />
+<Link Source = "IModel" Target="IssuanceItem" Category="Contains" />
+<Link Source = "Employee" Target="Employee.Id" Category="Contains" />
+<Link Source = "Employee" Target="Employee.FirstName" Category="Contains" />
+<Link Source = "Employee" Target="Employee.LastName" Category="Contains" />
+<Link Source = "Employee" Target="Employee.Patronymic" Category="Contains" />
+<Link Source = "Employee" Target="Employee.State" Category="Contains" />
+<Link Source = "Employee" Target="Employee.WorkPosition" Category="Contains" />
+<Link Source = "IModel" Target="ReceiptItem" Category="Contains" />
+<Link Source = "IssuanceItem" Target="IssuanceItem.Issuance" Category="Contains" />
+<Link Source = "IssuanceItem" Target="IssuanceItem.Uniform" Category="Contains" />
+<Link Source = "IssuanceItem" Target="IssuanceItem.Id" Category="Contains" />
+<Link Source="IssuanceItem" Target="UniformIssuance" From="IssuanceItem.IssuanceId" To="UniformIssuance.Id" Name="IssuanceItem -> UniformIssuance" Annotations="" IsUnique="False" Label="1:*" Category="Foreign Key" />
+<Link Source="IssuanceItem" Target="Uniform" From="IssuanceItem.UniformId" To="Uniform.Id" Name="IssuanceItem -> Uniform" Annotations="" IsUnique="False" Label="1:*" Category="Foreign Key" />
+<Link Source = "IssuanceItem" Target="IssuanceItem.Amount" Category="Contains" />
+<Link Source = "IssuanceItem" Target="IssuanceItem.IssuanceId" Category="Contains" />
+<Link Source = "IssuanceItem" Target="IssuanceItem.UniformId" Category="Contains" />
+<Link Source = "IModel" Target="Uniform" Category="Contains" />
+<Link Source = "ReceiptItem" Target="ReceiptItem.Receipt" Category="Contains" />
+<Link Source = "ReceiptItem" Target="ReceiptItem.Uniform" Category="Contains" />
+<Link Source = "ReceiptItem" Target="ReceiptItem.Id" Category="Contains" />
+<Link Source="ReceiptItem" Target="UniformReceipt" From="ReceiptItem.ReceiptId" To="UniformReceipt.Id" Name="ReceiptItem -> UniformReceipt" Annotations="" IsUnique="False" Label="1:*" Category="Foreign Key" />
+<Link Source="ReceiptItem" Target="Uniform" From="ReceiptItem.UniformId" To="Uniform.Id" Name="ReceiptItem -> Uniform" Annotations="" IsUnique="False" Label="1:*" Category="Foreign Key" />
+<Link Source = "ReceiptItem" Target="ReceiptItem.Amount" Category="Contains" />
+<Link Source = "ReceiptItem" Target="ReceiptItem.ReceiptId" Category="Contains" />
+<Link Source = "ReceiptItem" Target="ReceiptItem.UniformId" Category="Contains" />
+<Link Source = "IModel" Target="UniformDiscard" Category="Contains" />
+<Link Source = "Uniform" Target="Uniform.UniformTypeRef" Category="Contains" />
+<Link Source = "Uniform" Target="Uniform.Id" Category="Contains" />
+<Link Source="Uniform" Target="UniformTypeRef" From="Uniform.UniformTypeRefUniformType" To="UniformTypeRef.UniformType" Name="Uniform -> UniformTypeRef" Annotations="" IsUnique="False" Label="1:*" Category="Foreign Key" />
+<Link Source = "Uniform" Target="Uniform.Name" Category="Contains" />
+<Link Source = "Uniform" Target="Uniform.Price" Category="Contains" />
+<Link Source = "Uniform" Target="Uniform.UniformType" Category="Contains" />
+<Link Source = "Uniform" Target="Uniform.UniformTypeRefUniformType" Category="Contains" />
+<Link Source = "IModel" Target="UniformIssuance" Category="Contains" />
+<Link Source = "UniformDiscard" Target="UniformDiscard.Uniform" Category="Contains" />
+<Link Source = "UniformDiscard" Target="UniformDiscard.Id" Category="Contains" />
+<Link Source="UniformDiscard" Target="Uniform" From="UniformDiscard.UniformId" To="Uniform.Id" Name="UniformDiscard -> Uniform" Annotations="" IsUnique="False" Label="1:*" Category="Foreign Key" />
+<Link Source = "UniformDiscard" Target="UniformDiscard.Amount" Category="Contains" />
+<Link Source = "UniformDiscard" Target="UniformDiscard.Reason" Category="Contains" />
+<Link Source = "UniformDiscard" Target="UniformDiscard.UniformId" Category="Contains" />
+<Link Source = "IModel" Target="UniformReceipt" Category="Contains" />
+<Link Source = "UniformIssuance" Target="UniformIssuance.Employee" Category="Contains" />
+<Link Source = "UniformIssuance" Target="UniformIssuance.IssuanceItems" Category="Contains" />
+<Link Source = "UniformIssuance" Target="UniformIssuance.Id" Category="Contains" />
+<Link Source="UniformIssuance" Target="Employee" From="UniformIssuance.EmployeeId" To="Employee.Id" Name="UniformIssuance -> Employee" Annotations="" IsUnique="False" Label="1:*" Category="Foreign Key" />
+<Link Source = "UniformIssuance" Target="UniformIssuance.Desctiption" Category="Contains" />
+<Link Source = "UniformIssuance" Target="UniformIssuance.EmployeeId" Category="Contains" />
+<Link Source = "UniformIssuance" Target="UniformIssuance.IssuanceAction" Category="Contains" />
+<Link Source = "UniformIssuance" Target="UniformIssuance.IssuanceDate" Category="Contains" />
+<Link Source = "IModel" Target="UniformTypeRef" Category="Contains" />
+<Link Source = "UniformReceipt" Target="UniformReceipt.ReceiptItems" Category="Contains" />
+<Link Source = "UniformReceipt" Target="UniformReceipt.Vendor" Category="Contains" />
+<Link Source = "UniformReceipt" Target="UniformReceipt.Id" Category="Contains" />
+<Link Source="UniformReceipt" Target="UniformVendor" From="UniformReceipt.VendorId" To="UniformVendor.Id" Name="UniformReceipt -> UniformVendor" Annotations="" IsUnique="False" Label="1:*" Category="Foreign Key" />
+<Link Source = "UniformReceipt" Target="UniformReceipt.Desctiption" Category="Contains" />
+<Link Source = "UniformReceipt" Target="UniformReceipt.ReceiptDate" Category="Contains" />
+<Link Source = "UniformReceipt" Target="UniformReceipt.VendorId" Category="Contains" />
+<Link Source = "IModel" Target="UniformVendor" Category="Contains" />
+<Link Source = "UniformTypeRef" Target="UniformTypeRef.UniformType" Category="Contains" />
+<Link Source = "UniformTypeRef" Target="UniformTypeRef.UniformTypeName" Category="Contains" />
+<Link Source = "IModel" Target="UniformVendor" Category="Contains" />
+<Link Source = "UniformVendor" Target="UniformVendor.Id" Category="Contains" />
+<Link Source = "UniformVendor" Target="UniformVendor.Description" Category="Contains" />
+<Link Source = "UniformVendor" Target="UniformVendor.Email" Category="Contains" />
+<Link Source = "UniformVendor" Target="UniformVendor.Name" Category="Contains" />
+<Link Source = "UniformVendor" Target="UniformVendor.Phone" Category="Contains" />
+  </Links>
+  <Styles>
+    <Style TargetType="Node" GroupLabel="EntityType" ValueLabel="True">
+      <Condition Expression="HasCategory('EntityType')" />
+      <Setter Property="Background" Value="#FFC0C0C0" />
+    </Style>
+    <Style TargetType="Node" GroupLabel="Property Primary" ValueLabel="True">
+      <Condition Expression="HasCategory('Property Primary')" />
+      <Setter Property="Background" Value="#FF008000" />
+    </Style>
+    <Style TargetType="Node" GroupLabel="Property Optional" ValueLabel="True">
+      <Condition Expression="HasCategory('Property Optional')" />
+      <Setter Property="Background" Value="#FF808040" />
+    </Style>
+    <Style TargetType="Node" GroupLabel="Property Foreign" ValueLabel="True">
+      <Condition Expression="HasCategory('Property Foreign')" />
+      <Setter Property="Background" Value="#FF8080FF" />
+    </Style>
+    <Style TargetType="Node" GroupLabel="Property Required" ValueLabel="True">
+      <Condition Expression="HasCategory('Property Required')" />
+      <Setter Property="Background" Value="#FFC0A000" />
+    </Style>
+    <Style TargetType="Node" GroupLabel="Navigation Property" ValueLabel="True">
+      <Condition Expression="HasCategory('Navigation Property')" />
+      <Setter Property="Background" Value="#FF990000" />
+    </Style>
+    <Style TargetType="Node" GroupLabel="Navigation Collection" ValueLabel="True">
+      <Condition Expression="HasCategory('Navigation Collection')" />
+      <Setter Property="Background" Value="#FFFF3232" />
+    </Style>
+    <Style TargetType="Node" GroupLabel="Model" ValueLabel="True">
+      <Condition Expression="HasCategory('Model')" />
+      <Setter Property="Background" Value="#FFFFFFFF" />
+    </Style>
+  </Styles>
+  <Properties>
+    <Property Id="Name" Group="Model Properties" DataType="System.String" />
+    <Property Id="Field"  Description="Backing field" Group="Model Properties" DataType="System.String" />
+    <Property Id="Type"  Description="CLR data type" Group="Model Properties" DataType="System.String" />
+    <Property Id="To" Description="Source property" Group="Model Properties" DataType="System.String" />
+    <Property Id="From" Description="Target property" Group="Model Properties" DataType="System.String" />
+    <Property Id="Dependent" Description="Dependent entity" Group="Model Properties" DataType="System.String" />
+    <Property Id="Inverse" Description="Inverse entity" Group="Model Properties" DataType="System.String" />
+    <Property Id="Principal" Description="Principal entity" Group="Model Properties" DataType="System.String" />    
+    <Property Id="Annotations" Description="Annotations" Group="Model Properties" DataType="System.String" />
+    <Property Id="BaseClass"  Description="Base class" Group="Model Properties" DataType="System.String" />
+    <Property Id="ChangeTrackingStrategy" Description="Change tracking strategy" Group="Model Properties" DataType="System.String" />
+    <Property Id="IsUnique" Group="Model Properties" DataType="System.Boolean" />
+    <Property Id="IsAbstract" Group="Model Properties" DataType="System.Boolean" />
+    <Property Id="ProductVersion" Label="Product Version" Description="EF Core product version" Group="Model Properties" DataType="System.String" />
+    <Property Id="IsIndexed" Group="Property Flags" DataType="System.Boolean" />
+    <Property Id="IsRequired" Group="Property Flags" DataType="System.Boolean" />
+    <Property Id="IsPrimaryKey" Group="Property Flags" DataType="System.Boolean" />
+    <Property Id="IsForeignKey" Group="Property Flags" DataType="System.Boolean" />
+    <Property Id="IsShadow" Group="Property Flags" DataType="System.Boolean" />
+    <Property Id="IsAlternateKey" Group="Property Flags" DataType="System.Boolean" />
+    <Property Id="IsConcurrencyToken" Group="Property Flags" DataType="System.Boolean" />
+    <Property Id="IsIndexed" Group="Property Flags" DataType="System.Boolean" />
+    <Property Id="IsUnicode" Group="Property Flags" DataType="System.Boolean" />
+    <Property Id="ValueGenerated" Group="Property Flags" DataType="System.String" />
+    <Property Id="BeforeSaveBehavior" Group="Property Flags" DataType="System.String" />
+    <Property Id="AfterSaveBehavior" Group="Property Flags" DataType="System.String" />
+    <Property Id="PropertyAccessMode" Group="Property Flags" DataType="System.String" />
+  </Properties>
+</DirectedGraph>

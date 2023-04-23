@@ -11,7 +11,7 @@ namespace UniformAccountingSystem.Data.Entities
         public UniformTypeRef(UniformType uniformType)
         {
             UniformType = uniformType;
-            UniformTypeName = UniformType.ToString();
+            UniformTypeName = uniformType.ToString();
         }
     }
 

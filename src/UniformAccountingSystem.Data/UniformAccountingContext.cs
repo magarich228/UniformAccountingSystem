@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using UniformAccountingSystem.Data.Entities;
+using UniformAccountingSystem.Data.Entities.Configurations;
 
 namespace UniformAccountingSystem.Data
 {
@@ -23,7 +24,15 @@ namespace UniformAccountingSystem.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-
+            modelBuilder.ApplyConfiguration(new UniformConfiguration());
+            modelBuilder.ApplyConfiguration(new EmployeeConfiguration());
+            modelBuilder.ApplyConfiguration(new VendorConfiguration());
+            modelBuilder.ApplyConfiguration(new UniformTypeConfiguration());
+            modelBuilder.ApplyConfiguration(new UniformReceiptConfiguration());
+            modelBuilder.ApplyConfiguration(new UniformIssuanceConfiguration());
+            modelBuilder.ApplyConfiguration(new UniformDiscardConfiguration());
+            modelBuilder.ApplyConfiguration(new ReceiptItemConfiguration());
+            modelBuilder.ApplyConfiguration(new IssuanceItemConfiguration());
 
             base.OnModelCreating(modelBuilder);
         }

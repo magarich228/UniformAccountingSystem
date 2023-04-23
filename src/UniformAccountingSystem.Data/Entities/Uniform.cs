@@ -11,5 +11,7 @@ namespace UniformAccountingSystem.Data.Entities
         public UniformType UniformType { get; set; } = UniformType.Other;
 
         public double Price { get; set; }
+
+        public UniformTypeRef? UniformTypeRef { get; set; }
     }
 }
