@@ -23,6 +23,9 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UniformAccountingSystem.BlazorApp", "src\UniformAccountingSystem.BlazorApp\UniformAccountingSystem.BlazorApp.csproj", "{0FAAEE13-6E82-42DE-8874-CD5BB13333D4}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "diagrams", "diagrams", "{20FC7BF9-FE66-4C50-99C0-8FCB1D9665FF}"
+	ProjectSection(SolutionItems) = preProject
+		docs\diagrams\UseCases.drawio = docs\diagrams\UseCases.drawio
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
