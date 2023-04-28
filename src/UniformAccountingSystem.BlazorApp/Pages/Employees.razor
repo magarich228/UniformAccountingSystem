@@ -20,16 +20,27 @@ else
                 <th>Фамилия</th>
                 <th>Отчество</th>
                 <th>Должность</th>
+                <th></th>
+                <th></th>
             </tr>
         </thead>
         <tbody>
             @foreach (var employee in employees)
             {
-                <tr>
+                <tr class="tr-functions" @onmouseover="ToogleHidden" @onmouseout="ToogleHidden">
                     <td>@employee.FirstName</td>
                     <td>@employee.LastName</td>
                     <td>@employee.Patronymic</td>
                     <td>@employee.WorkPosition</td>
+                    <td>
+                        <button class="btn btn-outline-dark btn-sm @hidden">
+                            Редактировать
+                        </button>
+                        <button class="btn btn-outline-dark btn-sm @hidden">
+                            Уволить
+                        </button>
+                    </td>
+                    <td></td>
                 </tr>
             }
         </tbody>
@@ -39,8 +50,16 @@ else
 @code {
     private EmployeeDto[]? employees;
 
+    private bool isHidden { get; set; } = true;
+    private string? hidden => isHidden ? "hidden" : null;
+
     protected override async Task OnInitializedAsync()
     {
         employees = (await EmployeeManager.GetAllAsync()).ToArray();
+    }
+
+    private void ToogleHidden()
+    {
+        isHidden = !isHidden;
     }
 }
