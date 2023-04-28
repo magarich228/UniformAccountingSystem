@@ -14,6 +14,8 @@ namespace UniformAccountingSystem.BLL.Dtos
         public Guid EmployeeId { get; set; }
 
         public IssuanceAction IssuanceAction { get; set; } = IssuanceAction.Issuance;
+
+        public List<IssuanceItemDto> IssuanceItems { get; set; } = new List<IssuanceItemDto>();
     }
 
     public enum IssuanceAction : int
