@@ -14,13 +14,14 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "docs", "docs", "{94039BE7-FDB0-4A8E-8493-9DA1EB49DC2B}"
 	ProjectSection(SolutionItems) = preProject
 		docs\README.md = docs\README.md
+		docs\лаба2.docx = docs\лаба2.docx
 	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UniformAccountingSystem.BLL", "src\UniformAccountingSystem.BLL\UniformAccountingSystem.BLL.csproj", "{C25DDAE2-3A5A-4E62-B4E3-220C892DC67E}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UniformAccountingSystem.Data", "src\UniformAccountingSystem.Data\UniformAccountingSystem.Data.csproj", "{2E382DAB-DDE9-4703-BFB2-837BF9486293}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UniformAccountingSystem.BlazorApp", "src\UniformAccountingSystem.BlazorApp\UniformAccountingSystem.BlazorApp.csproj", "{0FAAEE13-6E82-42DE-8874-CD5BB13333D4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UniformAccountingSystem.BlazorApp", "src\UniformAccountingSystem.BlazorApp\UniformAccountingSystem.BlazorApp.csproj", "{0FAAEE13-6E82-42DE-8874-CD5BB13333D4}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "diagrams", "diagrams", "{20FC7BF9-FE66-4C50-99C0-8FCB1D9665FF}"
 	ProjectSection(SolutionItems) = preProject
