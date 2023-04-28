@@ -14,7 +14,8 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "docs", "docs", "{94039BE7-FDB0-4A8E-8493-9DA1EB49DC2B}"
 	ProjectSection(SolutionItems) = preProject
 		docs\README.md = docs\README.md
-		docs\лаба2.docx = docs\лаба2.docx
+		docs\Lab2.docx = docs\Lab2.docx
+		docs\Lab1.docx = docs\Lab1.docx
 	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UniformAccountingSystem.BLL", "src\UniformAccountingSystem.BLL\UniformAccountingSystem.BLL.csproj", "{C25DDAE2-3A5A-4E62-B4E3-220C892DC67E}"
