@@ -28,6 +28,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UniformAccountingSystem.Bla
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "diagrams", "diagrams", "{20FC7BF9-FE66-4C50-99C0-8FCB1D9665FF}"
 	ProjectSection(SolutionItems) = preProject
+		docs\diagrams\Sequence.drawio = docs\diagrams\Sequence.drawio
 		docs\diagrams\UseCases.drawio = docs\diagrams\UseCases.drawio
 	EndProjectSection
 EndProject
