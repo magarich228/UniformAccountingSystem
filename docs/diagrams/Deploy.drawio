@@ -1,0 +1,49 @@
+<mxfile host="app.diagrams.net" modified="2023-04-29T07:26:30.351Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/112.0.0.0 Safari/537.36" etag="g4QmdSVJwhm09cVQpGBH" version="21.2.3" type="device">
+  <diagram name="Страница 1" id="at3VkbPSMIKih4fIQrpf">
+    <mxGraphModel dx="593" dy="628" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="xk7MyV_Osafd6CbRMw2v-1" value="арм заведующего учетом спецодежды" style="verticalAlign=top;align=left;spacingTop=8;spacingLeft=2;spacingRight=12;shape=cube;size=10;direction=south;fontStyle=4;html=1;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="414" y="240" width="156" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="xk7MyV_Osafd6CbRMw2v-2" value="Сервер БД" style="verticalAlign=top;align=left;spacingTop=8;spacingLeft=2;spacingRight=12;shape=cube;size=10;direction=south;fontStyle=4;html=1;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="30" y="240" width="260" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="xk7MyV_Osafd6CbRMw2v-3" value="сервер веб-приложения" style="verticalAlign=top;align=left;spacingTop=8;spacingLeft=2;spacingRight=12;shape=cube;size=10;direction=south;fontStyle=4;html=1;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="200" y="480" width="370" height="130" as="geometry" />
+        </mxCell>
+        <mxCell id="xk7MyV_Osafd6CbRMw2v-4" value="http, WebSockets (SignalR)" style="endArrow=none;html=1;rounded=0;entryX=1.025;entryY=0.211;entryDx=0;entryDy=0;entryPerimeter=0;exitX=-0.008;exitY=0.706;exitDx=0;exitDy=0;exitPerimeter=0;" edge="1" parent="1" source="xk7MyV_Osafd6CbRMw2v-3" target="xk7MyV_Osafd6CbRMw2v-2">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="340" y="540" as="sourcePoint" />
+            <mxPoint x="390" y="490" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="xk7MyV_Osafd6CbRMw2v-5" value="SQL" style="endArrow=none;html=1;rounded=0;entryX=1.01;entryY=0.473;entryDx=0;entryDy=0;entryPerimeter=0;exitX=-0.036;exitY=0.247;exitDx=0;exitDy=0;exitPerimeter=0;" edge="1" parent="1" source="xk7MyV_Osafd6CbRMw2v-3" target="xk7MyV_Osafd6CbRMw2v-1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="370" y="450" as="sourcePoint" />
+            <mxPoint x="182" y="373" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="xk7MyV_Osafd6CbRMw2v-10" value="СУБД" style="shape=module;align=left;spacingLeft=20;align=center;verticalAlign=top;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="50" y="290" width="100" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="xk7MyV_Osafd6CbRMw2v-11" value="БД" style="shape=module;align=left;spacingLeft=20;align=center;verticalAlign=top;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="170" y="290" width="100" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="xk7MyV_Osafd6CbRMw2v-12" value="Веб-браузер" style="shape=module;align=left;spacingLeft=20;align=center;verticalAlign=top;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="430" y="290" width="100" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="xk7MyV_Osafd6CbRMw2v-13" value="Серверное веб-приложение" style="shape=module;align=left;spacingLeft=20;align=center;verticalAlign=top;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="220" y="520" width="100" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="xk7MyV_Osafd6CbRMw2v-14" value="Учет спецодежды" style="shape=module;align=left;spacingLeft=20;align=center;verticalAlign=top;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="330" y="520" width="100" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="xk7MyV_Osafd6CbRMw2v-15" value="Доступ к данным" style="shape=module;align=left;spacingLeft=20;align=center;verticalAlign=top;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="440" y="520" width="100" height="50" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
