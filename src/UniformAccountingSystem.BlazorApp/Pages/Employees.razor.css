@@ -1,5 +1,5 @@
-﻿.tr-functions{
-
+﻿.tr-functions:hover td button{
+    visibility: visible;
 }
 
 .hidden{
