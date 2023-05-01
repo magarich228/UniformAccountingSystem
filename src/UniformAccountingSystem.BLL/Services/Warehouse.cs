@@ -1,6 +1,8 @@
-﻿using UniformAccountingSystem.BLL.Abstractions;
+﻿using Microsoft.EntityFrameworkCore;
+using UniformAccountingSystem.BLL.Abstractions;
 using UniformAccountingSystem.BLL.Dtos;
 using UniformAccountingSystem.Data;
+using UniformAccountingSystem.Data.Entities;
 
 namespace UniformAccountingSystem.BLL.Services
 {
@@ -13,29 +15,74 @@ namespace UniformAccountingSystem.BLL.Services
             _db = db;
         }
 
-        public Task DiscardAsync(UniformDiscardDto uniformDiscard, CancellationToken cancellationToken = default)
+        public async Task<int> GetTotalAmountAsync(Guid uniformId, CancellationToken cancellationToken = default)
         {
-            throw new NotImplementedException();
+            var totalAmount = (await _db.ReceiptItems
+                    .Where(i => i.UniformId == uniformId)
+                    .SumAsync(i => i.Amount, cancellationToken))
+
+                    + (await _db.IssuesItem.Include(i => i.Issuance)
+                    .Where(i => i.UniformId == uniformId && i.Issuance!.IssuanceAction == Data.Entities.IssuanceAction.Return)
+                    .SumAsync(i => i.Amount, cancellationToken)) -
+
+                    ((await _db.Discards.Where(d => d.UniformId == uniformId).SumAsync(d => d.Amount, cancellationToken)) +
+
+                    (await _db.IssuesItem.Include(i => i.Issuance)
+                    .Where(i => i.UniformId == uniformId && i.Issuance!.IssuanceAction == Data.Entities.IssuanceAction.Issuance)
+                    .SumAsync(i => i.Amount, cancellationToken)));
+
+            return totalAmount;
         }
 
-        public Task<IEnumerable<WarehouseItemDto>> GetAllItemsAsync(CancellationToken cancellationToken = default)
+        public async Task<IEnumerable<WarehouseItemDto>> GetAllItemsAsync(CancellationToken cancellationToken = default)
         {
-            throw new NotImplementedException();
+            var items = new List<WarehouseItemDto>();
+
+            foreach (var uniform in _db.Uniforms)
+            {
+                var totalAmount = await GetTotalAmountAsync(uniform.Id, cancellationToken);
+
+                items.Add(new WarehouseItemDto
+                {
+                    Uniform = Mapping.Map<Uniform, UniformDto>(uniform),
+                    TotalAmount = totalAmount
+                });
+            }
+
+            return items;
         }
 
-        public Task<WarehouseItemDto> GetByUniformIdAsync(Guid uniformId, CancellationToken cancellationToken = default)
+        public async Task<WarehouseItemDto?> GetByUniformIdAsync(Guid uniformId, CancellationToken cancellationToken = default) =>
+            (await _db.Uniforms.FindAsync(new object[] { uniformId }, cancellationToken: cancellationToken) != null) ? 
+            new WarehouseItemDto
+            {
+                Uniform = Mapping.Map<Uniform, UniformDto>((await _db.Uniforms.FindAsync(new object[] { uniformId }, cancellationToken: cancellationToken))!),
+                TotalAmount = await GetTotalAmountAsync(uniformId, cancellationToken)
+            } :
+            null;
+
+        public async Task DiscardAsync(UniformDiscardDto uniformDiscard, CancellationToken cancellationToken = default)
         {
-            throw new NotImplementedException();
+            var discard = Mapping.Map<UniformDiscardDto, UniformDiscard>(uniformDiscard);
+
+            _db.Discards.Add(discard);
+            await _db.SaveChangesAsync(cancellationToken);
         }
 
-        public Task IssueAsync(UniformIssuanceDto uniformIssuance, CancellationToken cancellationToken = default)
+        public async Task IssueAsync(UniformIssuanceDto uniformIssuance, CancellationToken cancellationToken = default)
         {
-            throw new NotImplementedException();
+            var issue = Mapping.Map<UniformIssuanceDto, UniformIssuance>(uniformIssuance);
+
+            _db.Issues.Add(issue);
+            await _db.SaveChangesAsync(cancellationToken);
         }
 
-        public Task ReceiptAsync(UniformReceiptDto uniformReceipt, CancellationToken cancellationToken = default)
+        public async Task ReceiptAsync(UniformReceiptDto uniformReceipt, CancellationToken cancellationToken = default)
         {
-            throw new NotImplementedException();
+            var receipt = Mapping.Map<UniformReceiptDto, UniformReceipt>(uniformReceipt);
+
+            _db.Receipts.Add(receipt);
+            await _db.SaveChangesAsync(cancellationToken);
         }
 
         public Task<UniformDiscardDto> UpdateDiscardAsync(UniformDiscardDto uniformDiscard, CancellationToken cancellationToken = default)
