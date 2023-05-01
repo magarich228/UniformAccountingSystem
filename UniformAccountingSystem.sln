@@ -14,9 +14,14 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "docs", "docs", "{94039BE7-FDB0-4A8E-8493-9DA1EB49DC2B}"
 	ProjectSection(SolutionItems) = preProject
 		docs\Lab1.docx = docs\Lab1.docx
+		docs\Lab10.docx = docs\Lab10.docx
 		docs\Lab2.docx = docs\Lab2.docx
 		docs\Lab4.docx = docs\Lab4.docx
 		docs\Lab5.docx = docs\Lab5.docx
+		docs\Lab6.docx = docs\Lab6.docx
+		docs\Lab7.docx = docs\Lab7.docx
+		docs\Lab8.docx = docs\Lab8.docx
+		docs\Lab9.docx = docs\Lab9.docx
 		docs\README.md = docs\README.md
 	EndProjectSection
 EndProject
@@ -28,7 +33,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UniformAccountingSystem.Bla
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "diagrams", "diagrams", "{20FC7BF9-FE66-4C50-99C0-8FCB1D9665FF}"
 	ProjectSection(SolutionItems) = preProject
+		docs\diagrams\Activities.drawio = docs\diagrams\Activities.drawio
+		docs\diagrams\Components.drawio = docs\diagrams\Components.drawio
+		docs\diagrams\Cooperations.drawio = docs\diagrams\Cooperations.drawio
+		docs\diagrams\DataStream.drawio = docs\diagrams\DataStream.drawio
+		docs\diagrams\Deploy.drawio = docs\diagrams\Deploy.drawio
 		docs\diagrams\Sequence.drawio = docs\diagrams\Sequence.drawio
+		docs\diagrams\Statements.drawio = docs\diagrams\Statements.drawio
 		docs\diagrams\UseCases.drawio = docs\diagrams\UseCases.drawio
 	EndProjectSection
 EndProject
