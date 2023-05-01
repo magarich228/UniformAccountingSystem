@@ -5,3 +5,11 @@
 .hidden{
     visibility: hidden;
 }
+
+.page-controls{
+    display: flex;
+}
+
+.form-check{
+    margin-left: 20px;
+}
