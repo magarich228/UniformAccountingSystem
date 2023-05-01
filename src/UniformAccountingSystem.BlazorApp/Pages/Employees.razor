@@ -1,8 +1,10 @@
 ﻿@page "/employees"
 @using System.ComponentModel.DataAnnotations;
+@using System.Text;
 @using UniformAccountingSystem.BLL.Dtos
 @using UniformAccountingSystem.BLL.Abstractions;
 @inject IEmployeesManager EmployeeManager
+@inject IJSRuntime JSRuntime
 
 <PageTitle>Сотрудники</PageTitle>
 
@@ -151,16 +153,8 @@ else
 
     private async Task OnAddNewEmployeeSubmitAsync()
     {
-        ValidationContext context = new(newEmployee);
-        List<ValidationResult> results = new();
-
-        if (!Validator.TryValidateObject(newEmployee, context, results, true))
-        {
-            foreach (var error in results)
-            {
-                Console.WriteLine(error.ErrorMessage);
-            }
-        }
+        if (!await ValidateEmployeeAsync(newEmployee))
+            return;
 
         await EmployeeManager.AddAsync(newEmployee);
 
@@ -189,7 +183,31 @@ else
 
     private async Task SaveEditEmployeeAsync(EmployeeDto employee)
     {
+        if (!await ValidateEmployeeAsync(employee))
+            return;
+
         await EmployeeManager.UpdateInfoAsync(employee);
         await ToEditAsync(employee.Id, false);
+    }
+
+    private async Task<bool> ValidateEmployeeAsync(EmployeeDto employee)
+    {
+        ValidationContext context = new(employee);
+        List<ValidationResult> results = new();
+
+        if (!Validator.TryValidateObject(employee, context, results, true))
+        {
+            StringBuilder sb = new();
+
+            foreach (var error in results)
+            {
+                sb.AppendLine(error.ErrorMessage);
+            }
+
+            await JSRuntime.InvokeVoidAsync("ShowErrors", sb.ToString());
+            return false;
+        }
+
+        return true;
     }
 }
