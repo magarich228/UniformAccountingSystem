@@ -2,10 +2,6 @@
     visibility: visible;
 }
 
-.hidden{
-    visibility: hidden;
-}
-
 .page-controls{
     display: flex;
 }
