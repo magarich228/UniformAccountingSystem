@@ -41,12 +41,12 @@ namespace UniformAccountingSystem.BLL.Services
             return (result > 0) ? vendor.Id : null;
         }
 
-        public async Task<VendorDto?> DeleteByIdAsync(Guid id, CancellationToken cancellationToken = default)
+        public async Task<bool> DeleteByIdAsync(Guid id, CancellationToken cancellationToken = default)
         {
             var vendor = await _db.Vendors.FindAsync(new object[] { id }, cancellationToken: cancellationToken);
 
             if (vendor == null) 
-                return null;
+                return false;
 
             _db.Vendors.Remove(vendor);
 

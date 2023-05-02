@@ -36,7 +36,14 @@ else
             <tr class="tr-functions @newElClass">
                 <td><input @bind-value="newUniform.Name" /></td>
                 <td><input @bind-value="newUniform.Price" /></td>
-                <td><input @bind-value="newUniform.UniformType" /></td>
+                <td>
+                    <select @bind="newUniform.UniformType">
+                        @foreach (var type in Enum.GetValues<UniformType>())
+                        {
+                            <option value="@type">@type.ToString()</option>
+                        }
+                    </select>
+                </td>
                 <td>
                     <button class="btn btn-outline-dark btn-sm" @onclick="OnAddNewUniformSubmitAsync">
                         Сохранить
@@ -71,7 +78,14 @@ else
                     <tr class="tr-functions">
                         <td><input @bind-value="@uniform.Name" /></td>
                         <td><input @bind-value="@uniform.Price" /></td>
-                        <td><input @bind-value="@uniform.UniformType" /></td>
+                        <td>
+                            <select @bind="uniform.UniformType">
+                                @foreach (var type in Enum.GetValues<UniformType>())
+                                {
+                                    <option value="@type">@type.ToString()</option>
+                                }
+                            </select>
+                        </td>
                         <td>
                             <button class="btn btn-outline-dark btn-sm hidden" @onclick="@(() => ToEditAsync(uniform.Id, false))">
                                 Отменить
