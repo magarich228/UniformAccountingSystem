@@ -177,8 +177,6 @@ else
         var edit = employeesEdit.Find(e => e.empId == employeeId);
         employeesEdit.Remove(edit);
         employeesEdit.Add((isEdit, employeeId));
-
-        employeesEdit.ForEach(e => Console.WriteLine(e.edit));
     }
 
     private async Task SaveEditEmployeeAsync(EmployeeDto employee)
