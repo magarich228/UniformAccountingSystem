@@ -7,7 +7,7 @@ namespace UniformAccountingSystem.BLL.Dtos
     {
         public Guid Id { get; set; } = Guid.NewGuid();
 
-        [StringLength(100)]
+        [StringLength(100), Required]
         public string Name { get; set; } = null!;
 
         [EnumDataType(typeof(UniformType))]
