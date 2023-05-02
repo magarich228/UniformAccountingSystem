@@ -1,0 +1,197 @@
+﻿@page "/uniforms"
+@using System.ComponentModel.DataAnnotations;
+@using System.Text;
+@using UniformAccountingSystem.BLL.Dtos
+@using UniformAccountingSystem.BLL.Abstractions;
+@inject IUniformService UniformService
+@inject IJSRuntime JSRuntime
+
+<PageTitle>Спецодежда</PageTitle>
+
+<h1>Спецодежда</h1>
+
+@if (uniforms == null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <div class="page-controls">
+        <button class="btn btn-outline-dark" @onclick="OnAdd">
+            Добавить
+        </button>
+    </div>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Наименование</th>
+                <th>Цена</th>
+                <th>Тип</th>
+                <th></th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr class="tr-functions @newElClass">
+                <td><input @bind-value="newUniform.Name" /></td>
+                <td><input @bind-value="newUniform.Price" /></td>
+                <td><input @bind-value="newUniform.UniformType" /></td>
+                <td>
+                    <button class="btn btn-outline-dark btn-sm" @onclick="OnAddNewUniformSubmitAsync">
+                        Сохранить
+                    </button>
+                    <button class="btn btn-outline-dark btn-sm" @onclick="OnAddingCancel">
+                        Отменить
+                    </button>
+                </td>
+                <td></td>
+            </tr>
+            @foreach (var uniform in uniforms)
+            {
+                @if (!uniformsEdit.First(e => e.empId == uniform.Id).edit)
+                {
+                    <tr class="tr-functions">
+                        <td>@uniform.Name</td>
+                        <td>@uniform.Price</td>
+                        <td>@uniform.UniformType</td>
+                        <td>
+                            <button class="btn btn-outline-dark btn-sm hidden" @onclick="@(() => ToEditAsync(uniform.Id, true))">
+                                Редактировать
+                            </button>
+                            <button class="btn btn-outline-dark btn-sm hidden" @onclick="@(() => DeleteAsync(uniform))">
+                                Удалить
+                            </button>
+                        </td>
+                        <td></td>
+                    </tr>
+                }
+                else
+                {
+                    <tr class="tr-functions">
+                        <td><input @bind-value="newUniform.Name" /></td>
+                        <td><input @bind-value="newUniform.Price" /></td>
+                        <td><input @bind-value="newUniform.UniformType" /></td>
+                        <td>
+                            <button class="btn btn-outline-dark btn-sm hidden" @onclick="@(() => ToEditAsync(uniform.Id, false))">
+                                Отменить
+                            </button>
+                            <button class="btn btn-outline-dark btn-sm hidden" @onclick="@(() => SaveEditEmployeeAsync(uniform))">
+                                Сохранить
+                            </button>
+                        </td>
+                        <td></td>
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>
+}
+
+@code {
+    private UniformDto[]? uniforms;
+    private bool allUniforms = false;
+
+    private List<(bool edit, Guid empId)> uniformsEdit = new List<(bool edit, Guid empId)>();
+
+    private UniformDto newUniform = new();
+    private string newElClass = "new-el-hide";
+
+    protected override async Task OnInitializedAsync()
+    {
+        await SetUniformsAsync();
+    }
+
+    private async Task SetUniformsAsync()
+    {
+        uniforms = (await UniformService.GetAllAsync()).ToArray();
+
+        SetUniformsEdit();
+    }
+
+    private void SetUniformsEdit()
+    {
+        List<(bool edit, Guid empId)> employeesEdit = new();
+
+        foreach (var emp in uniforms!)
+        {
+            var edit = this.uniformsEdit.FirstOrDefault(e => e.empId == emp.Id);
+
+            employeesEdit.Add((edit != default ? edit.edit : false, emp.Id));
+        }
+
+        this.uniformsEdit = employeesEdit;
+    }
+
+    private void OnAdd()
+    {
+        newElClass = "new-emp";
+    }
+
+    private void OnAddingCancel()
+    {
+        newUniform = new();
+        newElClass = "new-emp-hide";
+    }
+
+    private async Task OnAddNewUniformSubmitAsync()
+    {
+        if (!await ValidateUniformAsync(newUniform))
+            return;
+
+        await UniformService.AddAsync(newUniform);
+
+        newUniform = new();
+        newElClass = "new-emp-hide";
+
+        await SetUniformsAsync();
+    }
+
+    private async Task DeleteAsync(UniformDto uniform)
+    {
+        await UniformService.DeleteByIdAsync(uniform.Id);
+        await SetUniformsAsync();
+    }
+
+    private async Task ToEditAsync(Guid uniformId, bool isEdit)
+    {
+        await SetUniformsAsync();
+
+        var edit = uniformsEdit.Find(e => e.empId == uniformId);
+        uniformsEdit.Remove(edit);
+        uniformsEdit.Add((isEdit, uniformId));
+
+        uniformsEdit.ForEach(e => Console.WriteLine(e.edit));
+    }
+
+    private async Task SaveEditEmployeeAsync(UniformDto uniform)
+    {
+        if (!await ValidateUniformAsync(uniform))
+            return;
+
+        await UniformService.UpdateAsync(uniform);
+        await ToEditAsync(uniform.Id, false);
+    }
+
+    private async Task<bool> ValidateUniformAsync(UniformDto uniform)
+    {
+        ValidationContext context = new(uniform);
+        List<ValidationResult> results = new();
+
+        if (!Validator.TryValidateObject(uniform, context, results, true))
+        {
+            StringBuilder sb = new();
+
+            foreach (var error in results)
+            {
+                sb.AppendLine(error.ErrorMessage);
+            }
+
+            await JSRuntime.InvokeVoidAsync("ShowErrors", sb.ToString());
+            return false;
+        }
+
+        return true;
+    }
+}
+

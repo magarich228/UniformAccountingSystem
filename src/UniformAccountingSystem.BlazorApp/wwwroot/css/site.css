@@ -70,3 +70,22 @@ a, .btn-link {
 .hidden {
     visibility: hidden;
 }
+
+.tr-functions:hover td button {
+    visibility: visible;
+}
+
+.page-controls {
+    display: flex;
+}
+
+.form-check {
+    margin-left: 20px;
+}
+
+.new-el-hide {
+    display: none;
+}
+
+.new-el {
+}

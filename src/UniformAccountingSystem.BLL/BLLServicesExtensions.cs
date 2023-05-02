@@ -9,6 +9,7 @@ namespace UniformAccountingSystem.Data
         public static IServiceCollection AddUasBLLServices(this IServiceCollection services)
         {
             services.AddScoped<IEmployeesManager, EmployeesManager>();
+            services.AddScoped<IUniformService, UniformService>();
 
             return services;
         }
