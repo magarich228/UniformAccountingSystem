@@ -8,6 +8,6 @@ namespace UniformAccountingSystem.BLL.Abstractions
         Task<VendorDto?> GetByIdAsync(Guid id, CancellationToken cancellationToken = default);
         Task<Guid?> AddAsync(VendorDto entity, CancellationToken cancellationToken = default);
         Task<VendorDto?> UpdateAsync(VendorDto vendorDto, CancellationToken cancellationToken = default);
-        Task<bool?> DeleteByIdAsync(Guid id, CancellationToken cancellationToken = default);
+        Task<bool> DeleteByIdAsync(Guid id, CancellationToken cancellationToken = default);
     }
 }
