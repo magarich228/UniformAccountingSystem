@@ -149,6 +149,11 @@ else
 
     private async Task DeleteAsync(UniformDto uniform)
     {
+        if (!await JSRuntime.InvokeAsync<bool>("ConfirmDelete", null))
+        {
+            return;
+        }
+
         await UniformService.DeleteByIdAsync(uniform.Id);
         await SetUniformsAsync();
     }
