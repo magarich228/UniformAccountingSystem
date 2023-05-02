@@ -1,0 +1,204 @@
+﻿@page "/vendors"
+@using System.ComponentModel.DataAnnotations;
+@using System.Text;
+@using UniformAccountingSystem.BLL.Dtos
+@using UniformAccountingSystem.BLL.Abstractions;
+@inject IVendorManager VendorManager
+@inject IJSRuntime JSRuntime
+
+<PageTitle>Поставщики</PageTitle>
+
+<h1>Поставщики</h1>
+
+@if (vendors == null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <div class="page-controls">
+        <button class="btn btn-outline-dark" @onclick="OnAdd">
+            Добавить
+        </button>
+    </div>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Наименование</th>
+                <th>Описание</th>
+                <th>Телефон</th>
+                <th>Почта</th>
+                <th></th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr class="tr-functions @newElClass">
+                <td><input @bind-value="newVendor.Name" /></td>
+                <td><input @bind-value="newVendor.Description" /></td>
+                <td><input @bind-value="newVendor.Phone" /></td>
+                <td><input @bind-value="newVendor.Email" /></td>
+                <td>
+                    <button class="btn btn-outline-dark btn-sm" @onclick="OnAddNewVendorSubmitAsync">
+                        Сохранить
+                    </button>
+                    <button class="btn btn-outline-dark btn-sm" @onclick="OnAddingCancel">
+                        Отменить
+                    </button>
+                </td>
+                <td></td>
+            </tr>
+            @foreach (var vendor in vendors)
+            {
+                @if (!vendorsEdit.First(e => e.vendorId == vendor.Id).edit)
+                {
+                    <tr class="tr-functions">
+                        <td>@vendor.Name</td>
+                        <td>@vendor.Description</td>
+                        <td>@vendor.Phone</td>
+                        <td>@vendor.Email</td>
+                        <td>
+                            <button class="btn btn-outline-dark btn-sm hidden" @onclick="@(() => ToEditAsync(vendor.Id, true))">
+                                Редактировать
+                            </button>
+                            <button class="btn btn-outline-dark btn-sm hidden" @onclick="@(() => DeleteAsync(vendor))">
+                                Удалить
+                            </button>
+                        </td>
+                        <td></td>
+                    </tr>
+                }
+                else
+                {
+                    <tr class="tr-functions">
+                        <td><input disabled @bind-value="@vendor.Name" /></td>
+                        <td><input @bind-value="@vendor.Description" /></td>
+                        <td><input disabled @bind-value="@vendor.Phone" /></td>
+                        <td><input @bind-value="@vendor.Email" /></td>
+                        <td>
+                            <button class="btn btn-outline-dark btn-sm hidden" @onclick="@(() => ToEditAsync(vendor.Id, false))">
+                                Отменить
+                            </button>
+                            <button class="btn btn-outline-dark btn-sm hidden" @onclick="@(() => SaveEditVendorAsync(vendor))">
+                                Сохранить
+                            </button>
+                        </td>
+                        <td></td>
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>
+}
+
+@code {
+    private VendorDto[]? vendors;
+    private bool allVendors = false;
+
+    private List<(bool edit, Guid vendorId)> vendorsEdit = new List<(bool edit, Guid vendorId)>();
+
+    private VendorDto newVendor = new();
+    private string newElClass = "new-el-hide";
+
+    protected override async Task OnInitializedAsync()
+    {
+        await SetVendorsAsync();
+    }
+
+    private async Task SetVendorsAsync()
+    {
+        vendors = (await VendorManager.GetAllAsync()).ToArray();
+
+        SetVendorsEdit();
+    }
+
+    private void SetVendorsEdit()
+    {
+        List<(bool edit, Guid vendorId)> vendorsEdit = new();
+
+        foreach (var vendor in vendors!)
+        {
+            var edit = this.vendorsEdit.FirstOrDefault(e => e.vendorId == vendor.Id);
+
+            vendorsEdit.Add((edit != default ? edit.edit : false, vendor.Id));
+        }
+
+        this.vendorsEdit = vendorsEdit;
+    }
+
+    private void OnAdd()
+    {
+        newElClass = "new-el";
+    }
+
+    private void OnAddingCancel()
+    {
+        newVendor = new();
+        newElClass = "new-el-hide";
+    }
+
+    private async Task OnAddNewVendorSubmitAsync()
+    {
+        if (!await ValidateVendorAsync(newVendor))
+            return;
+
+        await VendorManager.AddAsync(newVendor);
+
+        newVendor = new();
+        newElClass = "new-el-hide";
+
+        await SetVendorsAsync();
+    }
+
+    private async Task DeleteAsync(VendorDto vendor)
+    {
+        if (!await JSRuntime.InvokeAsync<bool>("ConfirmDelete", null))
+        {
+            return;
+        }
+
+        await VendorManager.DeleteByIdAsync(vendor.Id);
+        await SetVendorsAsync();
+    }
+
+    private async Task ToEditAsync(Guid vendorId, bool isEdit)
+    {
+        await SetVendorsAsync();
+
+        var edit = vendorsEdit.Find(e => e.vendorId == vendorId);
+        vendorsEdit.Remove(edit);
+        vendorsEdit.Add((isEdit, vendorId));
+    }
+
+    private async Task SaveEditVendorAsync(VendorDto vendor)
+    {
+        if (!await ValidateVendorAsync(vendor))
+            return;
+
+        await VendorManager.UpdateAsync(vendor);
+        await ToEditAsync(vendor.Id, false);
+    }
+
+    private async Task<bool> ValidateVendorAsync(VendorDto vendor)
+    {
+        ValidationContext context = new(vendor);
+        List<ValidationResult> results = new();
+
+        if (!Validator.TryValidateObject(vendor, context, results, true))
+        {
+            StringBuilder sb = new();
+
+            foreach (var error in results)
+            {
+                sb.AppendLine(error.ErrorMessage);
+            }
+
+            await JSRuntime.InvokeVoidAsync("ShowErrors", sb.ToString());
+            return false;
+        }
+
+        return true;
+    }
+}
+
