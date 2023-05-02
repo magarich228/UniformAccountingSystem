@@ -125,13 +125,13 @@ else
 
     private void OnAdd()
     {
-        newElClass = "new-emp";
+        newElClass = "new-el";
     }
 
     private void OnAddingCancel()
     {
         newUniform = new();
-        newElClass = "new-emp-hide";
+        newElClass = "new-el-hide";
     }
 
     private async Task OnAddNewUniformSubmitAsync()
@@ -142,7 +142,7 @@ else
         await UniformService.AddAsync(newUniform);
 
         newUniform = new();
-        newElClass = "new-emp-hide";
+        newElClass = "new-el-hide";
 
         await SetUniformsAsync();
     }
