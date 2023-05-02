@@ -38,7 +38,7 @@ else
             </tr>
         </thead>
         <tbody>
-            <tr class="tr-functions @newEmpClass">
+            <tr class="tr-functions @newElClass">
                 <td><input @bind-value="newEmployee.FirstName" /></td>
                 <td><input @bind-value="newEmployee.LastName" /></td>
                 <td><input @bind-value="newEmployee.Patronymic" /></td>
@@ -103,7 +103,7 @@ else
     private List<(bool edit, Guid empId)> employeesEdit = new List<(bool edit, Guid empId)>();
 
     private EmployeeDto newEmployee = new();
-    private string newEmpClass = "new-emp-hide";
+    private string newElClass = "new-el-hide";
 
     protected override async Task OnInitializedAsync()
     {
@@ -142,13 +142,13 @@ else
 
     private void OnAdd()
     {
-        newEmpClass = "new-emp";
+        newElClass = "new-el";
     }
 
     private void OnAddingCancel()
     {
         newEmployee = new();
-        newEmpClass = "new-emp-hide";
+        newElClass = "new-el-hide";
     }
 
     private async Task OnAddNewEmployeeSubmitAsync()
@@ -159,7 +159,7 @@ else
         await EmployeeManager.AddAsync(newEmployee);
 
         newEmployee = new();
-        newEmpClass = "new-emp-hide";
+        newElClass = "new-el-hide";
 
         await SetEmployeesAsync();
     }

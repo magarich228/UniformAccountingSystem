@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using AutoMapper;
+using Microsoft.EntityFrameworkCore;
 using UniformAccountingSystem.BLL.Abstractions;
 using UniformAccountingSystem.BLL.Dtos;
 using UniformAccountingSystem.Data;
@@ -9,10 +10,14 @@ namespace UniformAccountingSystem.BLL.Services
     public class UniformService : IUniformService
     {
         private readonly UniformAccountingContext _db;
+        private readonly IMapper _mapper;
 
-        public UniformService(UniformAccountingContext db)
+        public UniformService(
+            UniformAccountingContext db, 
+            IMapper mapper)
         {
             _db = db;
+            _mapper = mapper;
         }
 
         public async Task<IEnumerable<UniformDto>> GetAllAsync(CancellationToken cancellationToken = default)
@@ -25,8 +30,10 @@ namespace UniformAccountingSystem.BLL.Services
         public async Task<Guid?> AddAsync(UniformDto uniformDto, CancellationToken cancellationToken = default)
         {
             Uniform uniform = Mapping.Map<UniformDto, Uniform>(uniformDto);
-            uniform.UniformTypeRef = new UniformTypeRef(uniform.UniformType);
-
+            uniform.UniformTypeRef = await _db.UniformTypes.FindAsync(
+                new object[] { _mapper.Map<Dtos.UniformType, Data.Entities.UniformType>(uniformDto.UniformType) }, 
+                cancellationToken: cancellationToken);
+            
             _db.Uniforms.Add(uniform);
 
             return (await _db.SaveChangesAsync(cancellationToken)) > 0 ? 
