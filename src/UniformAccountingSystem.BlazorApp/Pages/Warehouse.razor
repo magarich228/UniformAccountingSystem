@@ -1,0 +1,63 @@
+﻿@page "/warehouse"
+@using UniformAccountingSystem.BLL.Dtos
+@using UniformAccountingSystem.BLL.Abstractions;
+@inject IWarehouse WarehouseService
+
+<PageTitle>Склад</PageTitle>
+
+<h1>Склад</h1>
+
+@if (items == null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <div class="page-controls">
+        <button class="btn btn-outline-dark">
+            Поставка
+        </button>
+        <button class="btn btn-outline-dark">
+            Списание
+        </button>
+        <button class="btn btn-outline-dark">
+            Выдача
+        </button>
+    </div>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Идентификатор</th>
+                <th>Наименование</th>
+                <th>Остаток</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in items)
+            {
+                <tr class="tr-functions">
+                    <td>@item.Uniform.Id</td>
+                    <td>@item.Uniform.Name</td>
+                    <td>@item.TotalAmount</td>
+                    <td></td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+@code {
+    private WarehouseItemDto[]? items;
+
+    protected override async Task OnInitializedAsync()
+    {
+        await SetItemsAsync();
+    }
+
+    private async Task SetItemsAsync()
+    {
+        items = (await WarehouseService.GetAllItemsAsync()).ToArray();
+    }
+}
