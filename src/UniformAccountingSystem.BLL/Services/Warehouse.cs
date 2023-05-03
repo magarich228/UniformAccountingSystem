@@ -17,19 +17,21 @@ namespace UniformAccountingSystem.BLL.Services
 
         public async Task<int> GetTotalAmountAsync(Guid uniformId, CancellationToken cancellationToken = default)
         {
-            var totalAmount = (await _db.ReceiptItems
+            var receipts = await _db.ReceiptItems
                     .Where(i => i.UniformId == uniformId)
-                    .SumAsync(i => i.Amount, cancellationToken))
+                    .SumAsync(i => i.Amount, cancellationToken);
 
-                    + (await _db.IssuesItem.Include(i => i.Issuance)
+            var returns = await _db.IssuesItem.Include(i => i.Issuance)
                     .Where(i => i.UniformId == uniformId && i.Issuance!.IssuanceAction == Data.Entities.IssuanceAction.Return)
-                    .SumAsync(i => i.Amount, cancellationToken)) -
+                    .SumAsync(i => i.Amount, cancellationToken);
 
-                    ((await _db.Discards.Where(d => d.UniformId == uniformId).SumAsync(d => d.Amount, cancellationToken)) +
+            var discards = await _db.Discards.Where(d => d.UniformId == uniformId).SumAsync(d => d.Amount, cancellationToken);
 
-                    (await _db.IssuesItem.Include(i => i.Issuance)
+            var issues = await _db.IssuesItem.Include(i => i.Issuance)
                     .Where(i => i.UniformId == uniformId && i.Issuance!.IssuanceAction == Data.Entities.IssuanceAction.Issuance)
-                    .SumAsync(i => i.Amount, cancellationToken)));
+                    .SumAsync(i => i.Amount, cancellationToken);
+
+            var totalAmount = (receipts + returns) - (discards + issues);
 
             return totalAmount;
         }
@@ -53,7 +55,7 @@ namespace UniformAccountingSystem.BLL.Services
         }
 
         public async Task<WarehouseItemDto?> GetByUniformIdAsync(Guid uniformId, CancellationToken cancellationToken = default) =>
-            (await _db.Uniforms.FindAsync(new object[] { uniformId }, cancellationToken: cancellationToken) != null) ? 
+            (await _db.Uniforms.FindAsync(new object[] { uniformId }, cancellationToken: cancellationToken) != null) ?
             new WarehouseItemDto
             {
                 Uniform = Mapping.Map<Uniform, UniformDto>((await _db.Uniforms.FindAsync(new object[] { uniformId }, cancellationToken: cancellationToken))!),
