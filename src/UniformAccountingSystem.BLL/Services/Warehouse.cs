@@ -86,20 +86,5 @@ namespace UniformAccountingSystem.BLL.Services
             _db.Receipts.Add(receipt);
             await _db.SaveChangesAsync(cancellationToken);
         }
-
-        public Task<UniformDiscardDto> UpdateDiscardAsync(UniformDiscardDto uniformDiscard, CancellationToken cancellationToken = default)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task<UniformIssuanceDto> UpdateIssuanceAsync(UniformIssuanceDto uniformIssuance, CancellationToken cancellationToken = default)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task<UniformReceiptDto> UpdateReceiptAsync(UniformReceiptDto uniformReceipt, CancellationToken cancellationToken = default)
-        {
-            throw new NotImplementedException();
-        }
     }
 }
