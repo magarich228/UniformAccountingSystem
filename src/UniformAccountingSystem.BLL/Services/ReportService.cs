@@ -1,6 +1,8 @@
-﻿using UniformAccountingSystem.BLL.Abstractions;
+﻿using Microsoft.EntityFrameworkCore;
+using UniformAccountingSystem.BLL.Abstractions;
 using UniformAccountingSystem.BLL.Dtos;
 using UniformAccountingSystem.Data;
+using UniformAccountingSystem.Data.Entities;
 
 namespace UniformAccountingSystem.BLL.Services
 {
@@ -13,19 +15,13 @@ namespace UniformAccountingSystem.BLL.Services
             _db = db;
         }
 
-        public Task<IEnumerable<UniformDiscardDto>> GetUniformDiscards()
-        {
-            throw new NotImplementedException();
-        }
+        public async Task<IEnumerable<UniformDiscardDto>> GetUniformDiscards() =>
+            await _db.Discards.Select(d => Mapping.Map<UniformDiscard, UniformDiscardDto>(d)).ToListAsync();
 
-        public Task<IEnumerable<UniformIssuanceDto>> GetUniformIssuances()
-        {
-            throw new NotImplementedException();
-        }
+        public async Task<IEnumerable<UniformIssuanceDto>> GetUniformIssuances() =>
+            await _db.Issues.Select(i => Mapping.Map<UniformIssuance, UniformIssuanceDto>(i)).ToListAsync();
 
-        public Task<IEnumerable<UniformReceiptDto>> GetUniformReceipts()
-        {
-            throw new NotImplementedException();
-        }
+        public async Task<IEnumerable<UniformReceiptDto>> GetUniformReceipts() =>
+            await _db.Receipts.Select(r => Mapping.Map<UniformReceipt, UniformReceiptDto>(r)).ToListAsync();
     }
 }

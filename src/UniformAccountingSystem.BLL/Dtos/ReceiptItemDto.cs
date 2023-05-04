@@ -6,6 +6,7 @@ namespace UniformAccountingSystem.BLL.Dtos
     {
         public Guid Id { get; set; } = Guid.NewGuid();
 
+        [Required]
         public Guid UniformId { get; set; }
 
         [Range(1, 99999)]

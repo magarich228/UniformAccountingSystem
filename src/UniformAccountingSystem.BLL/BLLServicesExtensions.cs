@@ -15,6 +15,7 @@ namespace UniformAccountingSystem.Data
             services.AddScoped<IUniformService, UniformService>();
             services.AddScoped<IVendorManager, VendorManager>();
             services.AddScoped<IWarehouse, Warehouse>();
+            services.AddScoped<IReportService, ReportService>();
 
             return services;
         }
