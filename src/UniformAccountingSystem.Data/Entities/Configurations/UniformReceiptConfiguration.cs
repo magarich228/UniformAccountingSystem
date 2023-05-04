@@ -13,7 +13,7 @@ namespace UniformAccountingSystem.Data.Entities.Configurations
                 .HasDefaultValue(DateTime.UtcNow);
 
             builder.Property(r => r.Desctiption)
-                .HasMaxLength(200);
+            .HasMaxLength(200);
         }
     }
 }

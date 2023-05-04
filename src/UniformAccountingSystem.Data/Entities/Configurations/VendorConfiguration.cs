@@ -26,6 +26,15 @@ namespace UniformAccountingSystem.Data.Entities.Configurations
 
             builder.Property(v => v.Description)
                 .HasMaxLength(200);
+
+            builder.HasData(new UniformVendor
+            {
+                Id = Guid.NewGuid(),
+                Name = "Деловые линии",
+                Description = "Компания много Деловые линии",
+                Email = "dellines@gmail.com",
+                Phone = "89996604020"
+            });
         }
     }
 }

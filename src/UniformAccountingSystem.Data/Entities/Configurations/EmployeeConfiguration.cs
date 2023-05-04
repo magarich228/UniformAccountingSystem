@@ -27,6 +27,37 @@ namespace UniformAccountingSystem.Data.Entities.Configurations
             builder.Property(e => e.WorkPosition)
                 .HasMaxLength(100)
                 .IsRequired();
+
+            builder.HasData(new Employee[]
+            {
+                new Employee
+                {
+                    Id = Guid.NewGuid(),
+                    FirstName = "Александр",
+                    LastName = "Черепанов",
+                    Patronymic = "Петрович",
+                    State = EmployeeState.Active,
+                    WorkPosition = "роблоксер"
+                },
+                new Employee
+                {
+                    Id = Guid.NewGuid(),
+                    FirstName = "Вячеслав",
+                    LastName = "Горелов",
+                    Patronymic = "Антонович",
+                    State = EmployeeState.Active,
+                    WorkPosition = "разработчик"
+                },
+                new Employee
+                {
+                    Id = Guid.NewGuid(),
+                    FirstName = "Валерия",
+                    LastName = "Косынкова",
+                    Patronymic = "Дмитриевна",
+                    State = EmployeeState.Active,
+                    WorkPosition = "грузчик"
+                },
+            });
         }
     }
 }
