@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using UniformAccountingSystem.Data;
 
@@ -11,9 +12,11 @@ using UniformAccountingSystem.Data;
 namespace UniformAccountingSystem.Data.Migrations
 {
     [DbContext(typeof(UniformAccountingContext))]
-    partial class UniformAccountingContextModelSnapshot : ModelSnapshot
+    [Migration("20230504052011_Data")]
+    partial class Data
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
